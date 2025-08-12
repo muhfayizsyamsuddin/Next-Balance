@@ -1,282 +1,445 @@
-[
-  {
-    "name": "New Balance MR530 Men's Sneakers Shoes - White With Natural Indigo",
-    "slug": "new-balance-mr530-mens-sneakers-shoes-white-with-natural-indigo",
-    "description": "Sepatu sneakers dengan kombinasi warna putih dan indigo natural, nyaman untuk aktivitas harian.",
-    "excerpt": "Sneakers putih indigo premium.",
-    "price": 1699000,
-    "tags": ["sneakers", "new balance", "mr530"],
-    "thumbnail": "https://www.newbalance.co.id/media/catalog/product/1/01-NEW-BALANCE-FFSSBNEW0-NEWMR530SGD-White.jpg",
-    "images": [
-      "https://www.newbalance.co.id/media/catalog/product/cache/e8af46e41ac3b8200634ac4f1bc5de76/0/1/01-NEW-BALANCE-FFSSBNEW0-NEWMR530SGD-White.jpg"
-    ],
-    "createdAt": "2025-01-10T08:00:00.000Z",
-    "updatedAt": "2025-01-10T08:00:00.000Z"
-  },
-  {
-    "name": "New Balance 530 Unisex Sneakers- White",
-    "slug": "new-balance-530-unisex-sneakers-white",
-    "description": "Sneakers unisex warna putih, desain simpel dan versatile untuk berbagai gaya.",
-    "excerpt": "Sneakers putih unisex.",
-    "price": 1699000,
-    "tags": ["sneakers", "new balance", "530"],
-    "thumbnail": "https://www.newbalance.co.id/media/catalog/product/0/1/01-NEW-BALANCE-FFSSBNEWA-NEWMR530AD-White.jpg",
-    "images": [
-      "https://www.newbalance.co.id/media/catalog/product/cache/e8af46e41ac3b8200634ac4f1bc5de76/0/1/01-NEW-BALANCE-FFSSBNEWA-NEWMR530AD-White.jpg"
-    ],
-    "createdAt": "2025-01-11T08:00:00.000Z",
-    "updatedAt": "2025-01-11T08:00:00.000Z"
-  },
-  {
-    "name": "New Balance 530 Unisex Sneakers- Beige",
-    "slug": "new-balance-530-unisex-sneakers-beige",
-    "description": "Sneakers warna beige dengan sentuhan modern dan nyaman dipakai sepanjang hari.",
-    "excerpt": "Sneakers beige unisex.",
-    "price": 1699000,
-    "tags": ["sneakers", "new balance", "530"],
-    "thumbnail": "https://www.newbalance.co.id/media/catalog/product/0/1/01-NEW-BALANCE-FFSTYNEWA-NEWMR530AA-Brown.jpg",
-    "images": [
-      "https://www.newbalance.co.id/media/catalog/product/cache/e8af46e41ac3b8200634ac4f1bc5de76/0/1/01-NEW-BALANCE-FFSTYNEWA-NEWMR530AA-Brown.jpg"
-    ],
-    "createdAt": "2025-01-12T08:00:00.000Z",
-    "updatedAt": "2025-01-12T08:00:00.000Z"
-  },
-  {
-    "name": "New Balance 530 Men's Sneakers- White/Silver",
-    "slug": "new-balance-530-mens-sneakers-white-silver",
-    "description": "Sneakers kombinasi putih dan silver untuk tampilan sporty modern.",
-    "excerpt": "Sneakers putih silver.",
-    "price": 1699000,
-    "tags": ["sneakers", "new balance", "530"],
-    "thumbnail": "https://www.newbalance.co.id/media/catalog/product/1/01-NEW-BALANCE-FFSSBNEWA-NEWMR530EMA-White.jpg",
-    "images": [
-      "https://www.newbalance.co.id/media/catalog/product/cache/e8af46e41ac3b8200634ac4f1bc5de76/0/1/01-NEW-BALANCE-FFSSBNEWA-NEWMR530EMA-White.jpg"
-    ],
-    "createdAt": "2025-01-13T08:00:00.000Z",
-    "updatedAt": "2025-01-13T08:00:00.000Z"
-  },
-  {
-    "name": "New Balance 530 Unisex Sneakers - Silver Metallic With Summer Fog",
-    "slug": "new-balance-530-unisex-sneakers-silver-metallic-with-summer-fog",
-    "description": "Sneakers warna silver metallic dengan aksen summer fog yang stylish.",
-    "excerpt": "Sneakers silver metallic.",
-    "price": 1699000,
-    "tags": ["sneakers", "new balance", "530"],
-    "thumbnail": "https://www.newbalance.co.id/media/catalog/product/0/1/01-NEW-BALANCE-FFSSBNEW0-NEWMR530KA-Grey.jpg",
-    "images": [
-      "https://www.newbalance.co.id/media/catalog/product/cache/e8af46e41ac3b8200634ac4f1bc5de76/0/1/01-NEW-BALANCE-FFSSBNEW0-NEWMR530KA-Grey.jpg"
-    ],
-    "createdAt": "2025-01-14T08:00:00.000Z",
-    "updatedAt": "2025-01-14T08:00:00.000Z"
-  },
-  {
-    "name": "New Balance Rebel V5 Men's Running Shoes - Beige/Brown",
-    "slug": "new-balance-rebel-v5-mens-running-shoes-beige-brown",
-    "description": "Sepatu lari Rebel V5 dengan warna beige dan brown, ringan dan nyaman.",
-    "excerpt": "Running shoes beige brown.",
-    "price": 2499000,
-    "tags": ["running", "new balance", "rebel v5"],
-    "thumbnail": "https://www.newbalance.co.id/media/catalog/product/0/8/0888-NEWMFCXLY50CM10H-1.jpg",
-    "images": [
-      "https://www.newbalance.co.id/media/catalog/product/cache/e8af46e41ac3b8200634ac4f1bc5de76/0/8/0888-NEWMFCXLY50CM10H-1.jpg"
-    ],
-    "createdAt": "2025-01-15T08:00:00.000Z",
-    "updatedAt": "2025-01-15T08:00:00.000Z"
-  },
-  {
-    "name": "New Balance 530 Unisex Sneakers Shoes - Grey",
-    "slug": "new-balance-530-unisex-sneakers-shoes-grey",
-    "description": "Sneakers warna abu-abu elegan, cocok untuk pria dan wanita.",
-    "excerpt": "Sneakers abu-abu.",
-    "price": 1699000,
-    "tags": ["sneakers", "new balance", "530"],
-    "thumbnail": "https://www.newbalance.co.id/media/catalog/product/0/1/01-NEW-BALANCE-FFSSBNEWA-NEWMR530CK-Grey.jpg",
-    "images": [
-      "https://www.newbalance.co.id/media/catalog/product/cache/e8af46e41ac3b8200634ac4f1bc5de76/0/1/01-NEW-BALANCE-FFSSBNEWA-NEWMR530CK-Grey.jpg"
-    ],
-    "createdAt": "2025-01-16T08:00:00.000Z",
-    "updatedAt": "2025-01-16T08:00:00.000Z"
-  },
-  {
-    "name": "New Balance MR530 Men's Sneakers Shoes - Moonbeam With Sea Salt",
-    "slug": "new-balance-mr530-mens-sneakers-shoes-moonbeam-with-sea-salt",
-    "description": "Sneakers MR530 dengan kombinasi warna moonbeam dan sea salt yang unik.",
-    "excerpt": "Sneakers moonbeam sea salt.",
-    "price": 1699000,
-    "tags": ["sneakers", "new balance", "mr530"],
-    "thumbnail": "https://www.newbalance.co.id/media/catalog/product/1/01-NEW-BALANCE-FFSSBNEWA-NEWMR530SHD-Beige.jpg",
-    "images": [
-      "https://www.newbalance.co.id/media/catalog/product/cache/e8af46e41ac3b8200634ac4f1bc5de76/0/1/01-NEW-BALANCE-FFSSBNEWA-NEWMR530SHD-Beige.jpg"
-    ],
-    "createdAt": "2025-01-17T08:00:00.000Z",
-    "updatedAt": "2025-01-17T08:00:00.000Z"
-  },
-  {
-    "name": "New Balance 530 Boys Sneakers Shoes - Silver",
-    "slug": "new-balance-530-boys-sneakers-shoes-silver",
-    "description": "Sneakers anak laki-laki warna silver, ringan dan stylish.",
-    "excerpt": "Sneakers anak silver.",
-    "price": 1099000,
-    "tags": ["kids", "new balance", "530"],
-    "thumbnail": "https://www.newbalance.co.id/media/catalog/product/1/01-NEW-BALANCE-F34RUNEWA-NEWPZ530KA-Silver.jpg",
-    "images": [
-      "https://www.newbalance.co.id/media/catalog/product/cache/e8af46e41ac3b8200634ac4f1bc5de76/0/1/01-NEW-BALANCE-F34RUNEWA-NEWPZ530KA-Silver.jpg"
-    ],
-    "createdAt": "2025-01-18T08:00:00.000Z",
-    "updatedAt": "2025-01-18T08:00:00.000Z"
-  },
-  {
-    "name": "NEW BALANCE 574v3 Men Sneakers- Black With White",
-    "slug": "new-balance-574v3-men-sneakers-black-with-white",
-    "description": "Sneakers klasik hitam dengan aksen putih, nyaman dan timeless.",
-    "excerpt": "Sneakers hitam putih klasik.",
-    "price": 1599000,
-    "tags": ["sneakers", "new balance", "574v3"],
-    "thumbnail": "https://www.newbalance.co.id/media/catalog/product/1/01-NEW-BALANCE-FFSSBNEW0-NEWML574EVBD-Black.jpg",
-    "images": [
-      "https://www.newbalance.co.id/media/catalog/product/cache/e8af46e41ac3b8200634ac4f1bc5de76/0/1/01-NEW-BALANCE-FFSSBNEW0-NEWML574EVBD-Black.jpg"
-    ],
-    "createdAt": "2025-01-19T08:00:00.000Z",
-    "updatedAt": "2025-01-19T08:00:00.000Z"
-  },
-  {
-    "name": "NEW BALANCE 574v3 Women Sneakers - White With Grey",
-    "slug": "new-balance-574v3-women-sneakers-white-with-grey",
-    "description": "Sneakers klasik untuk wanita dengan kombinasi putih dan abu-abu yang elegan.",
-    "excerpt": "Sneakers wanita putih abu.",
-    "price": 1599000,
-    "tags": ["sneakers", "new balance", "574v3", "women"],
-    "thumbnail": "https://www.newbalance.co.id/media/catalog/product/1/01-NEW-BALANCE-FFSSBNEW0-NEWWL574EVBD-White.jpg",
-    "images": [
-      "https://www.newbalance.co.id/media/catalog/product/cache/e8af46e41ac3b8200634ac4f1bc5de76/0/1/01-NEW-BALANCE-FFSSBNEW0-NEWML574EVG-Grey.jpg"
-    ],
-    "createdAt": "2025-01-20T08:00:00.000Z",
-    "updatedAt": "2025-01-20T08:00:00.000Z"
-  },
-  {
-    "name": "New Balance Fresh Foam X 880v13 Men Running Shoes - Blue",
-    "slug": "new-balance-fresh-foam-x-880v13-men-running-shoes-blue",
-    "description": "Sepatu lari premium dengan teknologi Fresh Foam X, memberikan kenyamanan maksimal.",
-    "excerpt": "Running shoes biru Fresh Foam X.",
-    "price": 2299000,
-    "tags": ["running", "new balance", "880v13"],
-    "thumbnail": "https://www.newbalance.co.id/media/catalog/product/0/1/01-NEW-BALANCE-FRUNMEN00-NEWM880L13-Blue.jpg",
-    "images": [
-      "https://www.newbalance.co.id/media/catalog/product/cache/e8af46e41ac3b8200634ac4f1bc5de76/0/1/01-NEW-BALANCE-FFSSBNEWA-NEWMS327CBW-Black.jpg"
-    ],
-    "createdAt": "2025-01-21T08:00:00.000Z",
-    "updatedAt": "2025-01-21T08:00:00.000Z"
-  },
-  {
-    "name": "New Balance Fresh Foam X 1080v13 Women Running Shoes - Pink",
-    "slug": "new-balance-fresh-foam-x-1080v13-women-running-shoes-pink",
-    "description": "Sepatu lari untuk wanita dengan bantalan empuk Fresh Foam X dan desain feminin.",
-    "excerpt": "Running shoes pink Fresh Foam X.",
-    "price": 2499000,
-    "tags": ["running", "new balance", "1080v13", "women"],
-    "thumbnail": "https://www.newbalance.co.id/media/catalog/product/0/1/01-NEW-BALANCE-FRUNWOM00-NEWW1080V13-Pink.jpg",
-    "images": [
-      "https://www.newbalance.co.id/media/catalog/product/cache/e8af46e41ac3b8200634ac4f1bc5de76/0/8/0888-NEWML2002RA000008-1.jpg"
-    ],
-    "createdAt": "2025-01-22T08:00:00.000Z",
-    "updatedAt": "2025-01-22T08:00:00.000Z"
-  },
-  {
-    "name": "New Balance 327 Unisex Sneakers - Navy With White",
-    "slug": "new-balance-327-unisex-sneakers-navy-with-white",
-    "description": "Sneakers retro-modern dengan kombinasi warna navy dan putih.",
-    "excerpt": "Sneakers navy putih retro.",
-    "price": 1499000,
-    "tags": ["sneakers", "new balance", "327"],
-    "thumbnail": "https://www.newbalance.co.id/media/catalog/product/1/01-NEW-BALANCE-FFSSBNEWA-NEWMS327ND-Navy.jpg",
-    "images": [
-      "https://www.newbalance.co.id/media/catalog/product/cache/e8af46e41ac3b8200634ac4f1bc5de76/0/1/01-NEW-BALANCE-FFSSBNEW0-NEWML574EVW-Grey.jpg"
-    ],
-    "createdAt": "2025-01-23T08:00:00.000Z",
-    "updatedAt": "2025-01-23T08:00:00.000Z"
-  },
-  {
-    "name": "New Balance 327 Women Sneakers - Beige With Orange",
-    "slug": "new-balance-327-women-sneakers-beige-with-orange",
-    "description": "Sneakers wanita dengan warna beige dan aksen oranye yang fresh.",
-    "excerpt": "Sneakers beige oranye wanita.",
-    "price": 1499000,
-    "tags": ["sneakers", "new balance", "327", "women"],
-    "thumbnail": "https://www.newbalance.co.id/media/catalog/product/1/01-NEW-BALANCE-FFSSBNEWA-NEWWS327AO-Beige.jpg",
-    "images": [
-      "https://www.newbalance.co.id/media/catalog/product/cache/e8af46e41ac3b8200634ac4f1bc5de76/0/1/01-NEW-BALANCE-FFSSBNEWA-NEWM990GL6-Grey.jpg"
-    ],
-    "createdAt": "2025-01-24T08:00:00.000Z",
-    "updatedAt": "2025-01-24T08:00:00.000Z"
-  },
-  {
-    "name": "New Balance XC-72 Unisex Sneakers - Black With White",
-    "slug": "new-balance-xc-72-unisex-sneakers-black-with-white",
-    "description": "Sneakers dengan desain futuristik dan warna hitam-putih kontras.",
-    "excerpt": "Sneakers XC-72 hitam putih.",
-    "price": 1899000,
-    "tags": ["sneakers", "new balance", "xc-72"],
-    "thumbnail": "https://www.newbalance.co.id/media/catalog/product/1/01-NEW-BALANCE-FFSSBNEWA-NEWUXC72BB-Black.jpg",
-    "images": [
-      "https://www.newbalance.co.id/media/catalog/product/cache/e8af46e41ac3b8200634ac4f1bc5de76/0/1/01-NEW-BALANCE-FFSSBNEWA-NEWU9060GRY-Grey.jpg"
-    ],
-    "createdAt": "2025-01-25T08:00:00.000Z",
-    "updatedAt": "2025-01-25T08:00:00.000Z"
-  },
-  {
-    "name": "New Balance 2002R Men's Sneaker Shoes - Dark Grey",
-    "slug": "new-balance-2002r-men-sneaker-shoes-dark-grey",
-    "description": "Sneakers pria dengan desain chunky dan kombinasi warna abu-abu gelap.",
-    "excerpt": "Sneakers chunky abu gelap.",
-    "price": 1819300,
-    "tags": ["sneakers", "new balance", "2002r"],
-    "thumbnail": "https://www.newbalance.co.id/media/catalog/product/1/01-NEW-BALANCE-FFSSBNEW0-NEWM5740CB-Grey.jpg",
-    "images": [
-      "https://www.newbalance.co.id/media/catalog/product/cache/e8af46e41ac3b8200634ac4f1bc5de76/0/1/01-NEW-BALANCE-FFSSBNEW0-NEWML2002RB-DarkGrey.jpg"
-    ],
-    "createdAt": "2025-01-26T08:00:00.000Z",
-    "updatedAt": "2025-01-26T08:00:00.000Z"
-  },
-  {
-    "name": "New Balance 2002R Men's Sneakers - Marblehead",
-    "slug": "new-balance-2002r-men-sneakers-marblehead",
-    "description": "Sneakers pria dengan desain tebal dan kombinasi warna marblehead yang fresh.",
-    "excerpt": "Sneakers chunky marblehead pria.",
-    "price": 2079200,
-    "tags": ["sneakers", "new balance", "2002r"],
-    "thumbnail": "https://www.newbalance.co.id/media/catalog/product/1/01-NEW-BALANCE-FFSSBNEW0-NEWW5740CB-White.jpg",
-    "images": [
-      "https://www.newbalance.co.id/media/catalog/product/cache/e8af46e41ac3b8200634ac4f1bc5de76/0/1/01-NEW-BALANCE-FFSSBNEW0-NEWML2002RC-Grey.jpg"
-    ],
-    "createdAt": "2025-01-27T08:00:00.000Z",
-    "updatedAt": "2025-01-27T08:00:00.000Z"
-  },
-  {
-    "name": "New Balance 530 Unisex Sneakers - Beige",
-    "slug": "new-balance-530-unisex-sneakers-beige",
-    "description": "Sneakers kasual retro dengan kombinasi warna beige yang elegan.",
-    "excerpt": "Sneakers retro beige.",
-    "price": 1699000,
-    "tags": ["sneakers", "new balance", "530"],
-    "thumbnail": "https://www.newbalance.co.id/media/catalog/product/1/01-NEW-BALANCE-FFSSBNEWA-NEWMS237GW-Green.jpg",
-    "images": [
-      "https://www.newbalance.co.id/media/catalog/product/cache/e8af46e41ac3b8200634ac4f1bc5de76/0/1/01-NEW-BALANCE-FFSTYNEWA-NEWMR530AA1-BeigeRev1.jpg"
-    ],
-    "createdAt": "2025-01-28T08:00:00.000Z",
-    "updatedAt": "2025-01-28T08:00:00.000Z"
-  },
-  {
-    "name": "New Balance 550 Men Sneakers - White/Black",
-    "slug": "new-balance-550-men-sneakers-white-black",
-    "description": "Sneakers pria dengan desain retro dan kombinasi warna putih-hitam.",
-    "excerpt": "Sneakers retro putih hitam.",
-    "price": 1399300,
-    "tags": ["sneakers", "new balance", "550", "men"],
-    "thumbnail": "https://www.newbalance.co.id/media/catalog/product/1/01-NEW-BALANCE-FFSSBNEWA-NEWWS237PW-Pink.jpg",
-    "images": [
-      "https://www.newbalance.co.id/media/catalog/product/cache/e8af46e41ac3b8200634ac4f1bc5de76/0/1/01-NEW-BALANCE-FFSSBNEW0-NEWBB550HA1D-White.jpg"
-    ],
-    "createdAt": "2025-01-29T08:00:00.000Z",
-    "updatedAt": "2025-01-29T08:00:00.000Z"
-  }
-]
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "New Balance Rebel V5 Men's Running Shoes - Beige/Brown",
+      "slug": "new-balance-rebel-v5-mens-running-shoes-beige-brown",
+      "description": "Rebel by name, rebel by nature, the Rebe Info lebih lanjut",
+      "excerpt": "Rebel by name, rebel by nature...",
+      "price": 2499000,
+      "tags": ["running", "men", "beige", "brown"],
+      "thumbnail": "https://www.newbalance.co.id/media/catalog/product/cache/b444f50a64a092a2138a5e1cbd49879a/0/8/0888-NEWMFCXLY50CM11H-1.jpg",
+      "images": [
+        "https://www.newbalance.co.id/media/catalog/product/cache/b444f50a64a092a2138a5e1cbd49879a/0/8/0888-NEWMFCXLY50CM11H-1.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/b444f50a64a092a2138a5e1cbd49879a/0/8/0888-NEWMFCXLY50CM11H-3.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/b444f50a64a092a2138a5e1cbd49879a/0/8/0888-NEWMFCXLY50CM11H-2.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWMFCXLY50CM11H-1.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWMFCXLY50CM11H-2.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWMFCXLY50CM11H-3.jpg"
+      ],
+      "createdAt": "2025-08-12T01:00:00Z",
+      "updatedAt": "2025-08-12T01:00:00Z"
+    },
+    {
+      "id": 2,
+      "name": "New Balance 530 Boys Sneakers Shoes - Silver",
+      "slug": "new-balance-530-boys-sneakers-shoes-silver",
+      "description": "The 530 kids sneaker is a throwback of Info lebih lanjut",
+      "excerpt": "The 530 kids sneaker is a throwback...",
+      "price": 1099000,
+      "tags": ["kids", "sneakers", "silver"],
+      "thumbnail": "https://www.newbalance.co.id/media/catalog/product/1/01-NEW-BALANCE-F34RUNEWA-NEWPZ530KA-Silver.jpg",
+      "images": [
+        "https://www.newbalance.co.id/media/catalog/product/cache/b444f50a64a092a2138a5e1cbd49879a/0/1/01-NEW-BALANCE-F34RUNEWA-NEWPZ530KA-Silver.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/b444f50a64a092a2138a5e1cbd49879a/0/5/05-NEW-BALANCE-F34RUNEWA-NEWPZ530KA-Silver.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/b444f50a64a092a2138a5e1cbd49879a/0/2/02-NEW-BALANCE-F34RUNEWA-NEWPZ530KA-Silver.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/1/01-NEW-BALANCE-F34RUNEWA-NEWPZ530KA-Silver.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/2/02-NEW-BALANCE-F34RUNEWA-NEWPZ530KA-Silver.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/3/03-NEW-BALANCE-F34RUNEWA-NEWPZ530KA-Silver.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/4/04-NEW-BALANCE-F34RUNEWA-NEWPZ530KA-Silver.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/5/05-NEW-BALANCE-F34RUNEWA-NEWPZ530KA-Silver.jpg"
+      ],
+      "createdAt": "2025-08-12T01:00:00Z",
+      "updatedAt": "2025-08-12T01:00:00Z"
+    },
+    {
+      "id": 3,
+      "name": "New Balance 574 EVERGREEN Men's Sneakers - Grey With White",
+      "slug": "new-balance-574-evergreen-mens-sneakers-grey-with-white",
+      "description": "‘The most New Balance shoe ever’ say Info lebih lanjut",
+      "excerpt": "‘The most New Balance shoe ever’ say...",
+      "price": 1799000,
+      "tags": ["men", "sneakers", "grey", "white"],
+      "thumbnail": "https://www.newbalance.co.id/media/catalog/product/cache/b444f50a64a092a2138a5e1cbd49879a/0/1/01-NEW-BALANCE-FFSSBNEW0-NEWML574EVG-Grey.jpg",
+      "images": [
+        "https://www.newbalance.co.id/media/catalog/product/cache/b444f50a64a092a2138a5e1cbd49879a/0/1/01-NEW-BALANCE-FFSSBNEW0-NEWML574EVG-Grey.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/b444f50a64a092a2138a5e1cbd49879a/0/6/06-NEW-BALANCE-FFSSBNEW0-NEWML574EVG-Grey.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/b444f50a64a092a2138a5e1cbd49879a/0/2/02-NEW-BALANCE-FFSSBNEW0-NEWML574EVG-Grey.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/1/01-NEW-BALANCE-FFSSBNEW0-NEWML574EVG-Grey.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/2/02-NEW-BALANCE-FFSSBNEW0-NEWML574EVG-Grey.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/3/03-NEW-BALANCE-FFSSBNEW0-NEWML574EVG-Grey.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/4/04-NEW-BALANCE-FFSSBNEW0-NEWML574EVG-Grey.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/5/05-NEW-BALANCE-FFSSBNEW0-NEWML574EVG-Grey.jpg"
+      ],
+      "createdAt": "2025-08-12T01:00:00Z",
+      "updatedAt": "2025-08-12T01:00:00Z"
+    },
+    {
+      "id": 4,
+      "name": "NEW BALANCE 327 Men's Sneakers- Black With White",
+      "slug": "new-balance-327-mens-sneakers-black-with-white",
+      "description": "As recreational running established wide Info lebih lanjut",
+      "excerpt": "As recreational running established...",
+      "price": 1799000,
+      "tags": ["men", "sneakers", "black", "white"],
+      "thumbnail": "https://www.newbalance.co.id/media/catalog/product/1/01-NEW-BALANCE-FFSSBNEWA-NEWMS327CBW-Black.jpg",
+      "images": [
+        "https://www.newbalance.co.id/media/catalog/product/cache/b444f50a64a092a2138a5e1cbd49879a/0/1/01-NEW-BALANCE-FFSSBNEWA-NEWMS327CBW-Black.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/b444f50a64a092a2138a5e1cbd49879a/0/4/04-NEW-BALANCE-FFSSBNEWA-NEWMS327CBW-Black.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/b444f50a64a092a2138a5e1cbd49879a/0/5/05-NEW-BALANCE-FFSSBNEWA-NEWMS327CBW-Black.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/1/01-NEW-BALANCE-FFSSBNEWA-NEWMS327CBW-Black.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/2/02-NEW-BALANCE-FFSSBNEWA-NEWMS327CBW-Black.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/3/03-NEW-BALANCE-FFSSBNEWA-NEWMS327CBW-Black.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/4/04-NEW-BALANCE-FFSSBNEWA-NEWMS327CBW-Black.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/5/05-NEW-BALANCE-FFSSBNEWA-NEWMS327CBW-Black.jpg"
+      ],
+      "createdAt": "2025-08-12T01:00:00Z",
+      "updatedAt": "2025-08-12T01:00:00Z"
+    },
+    {
+      "id": "5",
+      "name": "New Balance 574v3 Men's Sneakers - Nimbus Cloud With White",
+      "slug": "new-balance-574v3-mens-sneakers-nimbus-cloud-with-white",
+      "description": "‘The most New Balance shoe ever’ say Info lebih lanjut",
+      "excerpt": "‘The most New Balance shoe ever’ say...",
+      "price": 1799000,
+      "tags": ["men", "sneakers", "nimbus cloud", "white"],
+      "thumbnail": "https://www.newbalance.co.id/media/catalog/product/0/1/01-NEW-BALANCE-FFSSBNEW0-NEWML574EVW-Grey.jpg",
+      "images": [
+        "https://www.newbalance.co.id/media/catalog/product/0/1/01-NEW-BALANCE-FFSSBNEW0-NEWML574EVW-Grey.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/0/5/05-NEW-BALANCE-FFSSBNEW0-NEWML574EVW-Grey.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/0/2/02-NEW-BALANCE-FFSSBNEW0-NEWML574EVW-Grey.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/0/3/03-NEW-BALANCE-FFSSBNEW0-NEWML574EVW-Grey.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/0/4/04-NEW-BALANCE-FFSSBNEW0-NEWML574EVW-Grey.jpg"
+      ],
+      "createdAt": "2025-08-12T01:00:00Z",
+      "updatedAt": "2025-08-12T01:00:00Z"
+    },
+    {
+      "id": "6",
+      "name": "New Balance 530 Unisex Sneakers - Beige",
+      "slug": "new-balance-530-unisex-sneakers-beige",
+      "description": "The 530 men’s sneaker is a throwback Info lebih lanjut",
+      "excerpt": "The 530 men’s sneaker is a throwback Info lebih lanjut",
+      "price": 1699000,
+      "tags": ["new", "balance", "530", "unisex", "sneakers", "beige"],
+      "thumbnail": "https://www.newbalance.co.id/media/catalog/product/cache/b444f50a64a092a2138a5e1cbd49879a/0/5/05-NEW-BALANCE-FFSTYNEWA-NEWMR530AA1-BeigeRev1.jpg",
+      "images": [
+        "https://www.newbalance.co.id/media/catalog/product/cache/b444f50a64a092a2138a5e1cbd49879a/0/1/01-NEW-BALANCE-FFSTYNEWA-NEWMR530AA1-BeigeRev1.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/b444f50a64a092a2138a5e1cbd49879a/0/5/05-NEW-BALANCE-FFSTYNEWA-NEWMR530AA1-BeigeRev1.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/b444f50a64a092a2138a5e1cbd49879a/0/2/02-NEW-BALANCE-FFSTYNEWA-NEWMR530AA1-BeigeRev1.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/1/01-NEW-BALANCE-FFSTYNEWA-NEWMR530AA1-BeigeRev1.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/2/02-NEW-BALANCE-FFSTYNEWA-NEWMR530AA1-BeigeRev1.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/3/03-NEW-BALANCE-FFSTYNEWA-NEWMR530AA1-BeigeRev1.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/4/04-NEW-BALANCE-FFSTYNEWA-NEWMR530AA1-BeigeRev1.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/5/05-NEW-BALANCE-FFSTYNEWA-NEWMR530AA1-BeigeRev1.jpg"
+      ],
+      "createdAt": "2025-08-12T01:45:00.000Z",
+      "updatedAt": "2025-08-12T01:45:00.000Z"
+    },
+    {
+      "id": "7",
+      "name": "New Balance Rebel V5 Men's Running Shoes - Black",
+      "slug": "new-balance-rebel-v5-mens-running-shoes-black",
+      "description": "Rebel by name, rebel by nature, the Rebe Info lebih lanjut",
+      "excerpt": "Rebel by name, rebel by nature, the Rebe Info lebih lanjut",
+      "price": 2499000,
+      "tags": [
+        "new",
+        "balance",
+        "rebel",
+        "v5",
+        "mens",
+        "running",
+        "shoes",
+        "black"
+      ],
+      "thumbnail": "https://www.newbalance.co.id/media/catalog/product/cache/b444f50a64a092a2138a5e1cbd49879a/0/8/0888-NEWMFCXLC500510H-1.jpg",
+      "images": [
+        "https://www.newbalance.co.id/media/catalog/product/cache/b444f50a64a092a2138a5e1cbd49879a/0/8/0888-NEWMFCXLC500510H-1.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/b444f50a64a092a2138a5e1cbd49879a/0/8/0888-NEWMFCXLC500510H-7.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/b444f50a64a092a2138a5e1cbd49879a/0/8/0888-NEWMFCXLC500510H-2.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWMFCXLC500510H-1.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWMFCXLC500510H-2.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWMFCXLC500510H-3.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWMFCXLC500510H-4.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWMFCXLC500510H-5.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWMFCXLC500510H-6.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWMFCXLC500510H-7.jpg"
+      ],
+      "createdAt": "2025-08-12T01:45:00.000Z",
+      "updatedAt": "2025-08-12T01:45:00.000Z"
+    },
+    {
+      "id": "8",
+      "name": "New Balance Rebel V5 Men's Running Shoes - White/Red",
+      "slug": "new-balance-rebel-v5-mens-running-shoes-white-red",
+      "description": "Rebel by name, rebel by nature, the Rebe Info lebih lanjut",
+      "excerpt": "Rebel by name, rebel by nature, the Rebe Info lebih lanjut",
+      "price": 2499000,
+      "tags": [
+        "new",
+        "balance",
+        "rebel",
+        "v5",
+        "mens",
+        "running",
+        "shoes",
+        "white",
+        "red"
+      ],
+      "thumbnail": "https://www.newbalance.co.id/media/catalog/product/cache/b444f50a64a092a2138a5e1cbd49879a/0/8/0888-NEWMFCXLV500R10H-1.jpg",
+      "images": [
+        "https://www.newbalance.co.id/media/catalog/product/cache/b444f50a64a092a2138a5e1cbd49879a/0/8/0888-NEWMFCXLV500R10H-1.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/b444f50a64a092a2138a5e1cbd49879a/0/8/0888-NEWMFCXLV500R10H-4.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/b444f50a64a092a2138a5e1cbd49879a/0/8/0888-NEWMFCXLV500R10H-2.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWMFCXLV500R10H-1.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWMFCXLV500R10H-2.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWMFCXLV500R10H-3.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWMFCXLV500R10H-4.jpg"
+      ],
+      "createdAt": "2025-08-12T01:45:00.000Z",
+      "updatedAt": "2025-08-12T01:45:00.000Z"
+    },
+    {
+      "id": "9",
+      "name": "New Balance 530 Unisex Sneakers Shoes - Pink",
+      "slug": "new-balance-530-unisex-sneakers-shoes-pink",
+      "description": "The original MR530 combined turn of the Info lebih lanjut",
+      "excerpt": "The original MR530 combined turn of the Info lebih lanjut",
+      "price": 1599000,
+      "tags": ["new", "balance", "530", "unisex", "sneakers", "shoes", "pink"],
+      "thumbnail": "https://www.newbalance.co.id/media/catalog/product/cache/b444f50a64a092a2138a5e1cbd49879a/0/8/0888-NEWU530TBDROS08H-1.jpg",
+      "images": [
+        "https://www.newbalance.co.id/media/catalog/product/cache/b444f50a64a092a2138a5e1cbd49879a/0/8/0888-NEWU530TBDROS08H-1.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/b444f50a64a092a2138a5e1cbd49879a/0/8/0888-NEWU530TBDROS08H-6.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/b444f50a64a092a2138a5e1cbd49879a/0/8/0888-NEWU530TBDROS08H-2.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU530TBDROS08H-1.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU530TBDROS08H-2.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU530TBDROS08H-3.jpg"
+      ],
+      "createdAt": "2025-08-12T01:45:00.000Z",
+      "updatedAt": "2025-08-12T01:45:00.000Z"
+    },
+    {
+      "id": "10",
+      "name": "New Balance 1906 Unisex Sneakers Shoes - Black",
+      "slug": "new-balance-1906-unisex-sneakers-shoes-black",
+      "description": "The 1906A, like its cousins the 2002R Info lebih lanjut",
+      "excerpt": "The 1906A, like its cousins the 2002R Info lebih lanjut",
+      "price": 2599000,
+      "tags": [
+        "new",
+        "balance",
+        "1906",
+        "unisex",
+        "sneakers",
+        "shoes",
+        "black"
+      ],
+      "thumbnail": "https://www.newbalance.co.id/media/catalog/product/cache/b444f50a64a092a2138a5e1cbd49879a/0/8/0888-NEWU1906AD00509H-1.jpg",
+      "images": [
+        "https://www.newbalance.co.id/media/catalog/product/cache/b444f50a64a092a2138a5e1cbd49879a/0/8/0888-NEWU1906AD00509H-1.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/b444f50a64a092a2138a5e1cbd49879a/0/8/0888-NEWU1906AD00509H-6.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/b444f50a64a092a2138a5e1cbd49879a/0/8/0888-NEWU1906AD00509H-2.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU1906AD00509H-1.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU1906AD00509H-2.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU1906AD00509H-3.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU1906AD00509H-4.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU1906AD00509H-5.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU1906AD00509H-6.jpg"
+      ],
+      "createdAt": "2025-08-12T01:45:00.000Z",
+      "updatedAt": "2025-08-12T01:45:00.000Z"
+    },
+    {
+      "id": "11",
+      "name": "New Balance 530 Unisex Sneakers Shoes - Grey",
+      "slug": "new-balance-530-unisex-sneakers-shoes-grey",
+      "description": "The original MR530 combined turn of the Info lebih lanjut",
+      "excerpt": "The original MR530 combined turn of the...",
+      "price": 1119300,
+      "tags": ["new balance", "530", "unisex", "sneakers", "grey"],
+      "thumbnail": "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU530TBAGRE09H-1.jpg",
+      "images": [
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU530TBAGRE09H-1.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU530TBAGRE09H-6.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU530TBAGRE09H-2.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU530TBAGRE09H-3.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU530TBAGRE09H-4.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU530TBAGRE09H-5.jpg"
+      ],
+      "createdAt": "2025-08-12T01:40:00.000Z",
+      "updatedAt": "2025-08-12T01:40:00.000Z"
+    },
+    {
+      "id": "12",
+      "name": "New Balance 740 Unisex Sneakers Shoes - Grey",
+      "slug": "new-balance-740-unisex-sneakers-shoes-grey",
+      "description": "The original 740 was the kind of daily Info lebih lanjut",
+      "excerpt": "The original 740 was the kind of daily...",
+      "price": 1799000,
+      "tags": ["new balance", "740", "unisex", "sneakers", "grey"],
+      "thumbnail": "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU740SG2GRE09H-1.jpg",
+      "images": [
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU740SG2GRE09H-1.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU740SG2GRE09H-7.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU740SG2GRE09H-2.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU740SG2GRE09H-3.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU740SG2GRE09H-4.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU740SG2GRE09H-5.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU740SG2GRE09H-6.jpg"
+      ],
+      "createdAt": "2025-08-12T01:40:00.000Z",
+      "updatedAt": "2025-08-12T01:40:00.000Z"
+    },
+    {
+      "id": "13",
+      "name": "New Balance Rebel V4 Men's Running Shoes - Orange/White",
+      "slug": "new-balance-rebel-v4-mens-running-shoes-orange-white",
+      "description": "Rebel by name, rebel by nature, the Rebel V4 is designed for those who dare to stand out.",
+      "excerpt": "Rebel by name, rebel by nature, the Rebel V4...",
+      "price": 2399000,
+      "tags": ["new balance", "rebel", "v4", "running", "orange", "white"],
+      "thumbnail": "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWMFCXCO400O10H-1.jpg",
+      "images": [
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWMFCXCO400O10H-1.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWMFCXCO400O10H-5.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWMFCXCO400O10H-2.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWMFCXCO400O10H-3.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWMFCXCO400O10H-4.jpg"
+      ],
+      "createdAt": "2025-08-12T01:40:00.000Z",
+      "updatedAt": "2025-08-12T01:40:00.000Z"
+    },
+    {
+      "id": "14",
+      "name": "New Balance 530 Unisex Sneakers Shoes - White/Green",
+      "slug": "new-balance-530-unisex-sneakers-shoes-white-green",
+      "description": "The original MR530 combined turn of the",
+      "excerpt": "The original MR530 combined turn of the...",
+      "price": 1599000,
+      "tags": ["new balance", "530", "unisex", "sneakers", "white", "green"],
+      "thumbnail": "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU530CSC00W09H-1.jpg",
+      "images": [
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU530CSC00W09H-1.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU530CSC00W09H-6.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU530CSC00W09H-2.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU530CSC00W09H-3.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU530CSC00W09H-4.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU530CSC00W09H-5.jpg"
+      ],
+      "createdAt": "2025-08-12T01:40:00.000Z",
+      "updatedAt": "2025-08-12T01:40:00.000Z"
+    },
+    {
+      "id": "15",
+      "name": "New Balance 740 Unisex Sneakers Shoes - Grey",
+      "slug": "new-balance-740-unisex-sneakers-shoes-grey-2",
+      "description": "These running shoes are designed with",
+      "excerpt": "These running shoes are designed with...",
+      "price": 1899000,
+      "tags": ["new balance", "740", "unisex", "sneakers", "grey"],
+      "thumbnail": "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU740WM2GRE08H-1.jpg",
+      "images": [
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU740WM2GRE08H-1.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU740WM2GRE08H-6.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU740WM2GRE08H-2.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU740WM2GRE08H-3.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU740WM2GRE08H-4.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU740WM2GRE08H-5.jpg"
+      ],
+      "createdAt": "2025-08-12T01:40:00.000Z",
+      "updatedAt": "2025-08-12T01:40:00.000Z"
+    },
+    {
+      "id": "16",
+      "name": "New Balance 530 Unisex Sneakers Shoes - Silver",
+      "slug": "new-balance-530-unisex-sneakers-shoes-silver",
+      "description": "The original MR530 combined turn of the",
+      "excerpt": "The original MR530 combined turn of the",
+      "price": 1699000,
+      "tags": ["sneakers", "unisex", "silver", "new balance"],
+      "thumbnail": "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU530ESA00W11H-1.jpg",
+      "images": [
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU530ESA00W11H-1.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU530ESA00W11H-6.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU530ESA00W11H-2.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU530ESA00W11H-3.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU530ESA00W11H-4.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU530ESA00W11H-5.jpg"
+      ],
+      "createdAt": "2025-08-12T01:35:00.000Z",
+      "updatedAt": "2025-08-12T01:35:00.000Z"
+    },
+    {
+      "id": "17",
+      "name": "New Balance Fresh Foam Garoé Men's Running Shoes - Brown",
+      "slug": "new-balance-fresh-foam-garoe-mens-running-shoes-brown",
+      "description": "The FRESH FOAM Garoé trail shoe offers",
+      "excerpt": "The FRESH FOAM Garoé trail shoe offers",
+      "price": 1799000,
+      "tags": ["running", "men", "brown", "new balance"],
+      "thumbnail": "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWMTGAROH270010H-1.jpg",
+      "images": [
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWMTGAROH270010H-1.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWMTGAROH270010H-5.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWMTGAROH270010H-2.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWMTGAROH270010H-3.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWMTGAROH270010H-4.jpg"
+      ],
+      "createdAt": "2025-08-12T01:35:00.000Z",
+      "updatedAt": "2025-08-12T01:35:00.000Z"
+    },
+    {
+      "id": "18",
+      "name": "New Balance 2000 Men's Sneakers Shoes - Black",
+      "slug": "new-balance-2000-mens-sneakers-shoes-black",
+      "description": "This eye-catching visual is paired with",
+      "excerpt": "This eye-catching visual is paired with",
+      "price": 2899000,
+      "tags": ["sneakers", "men", "black", "new balance"],
+      "thumbnail": "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU2000EA00510H-1.jpg",
+      "images": [
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU2000EA00510H-1.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU2000EA00510H-6.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU2000EA00510H-2.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU2000EA00510H-3.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU2000EA00510H-4.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU2000EA00510H-5.jpg"
+      ],
+      "createdAt": "2025-08-12T01:35:00.000Z",
+      "updatedAt": "2025-08-12T01:35:00.000Z"
+    },
+    {
+      "id": "19",
+      "name": "New Balance T500 Unisex Sneakers Shoes - White/Red",
+      "slug": "new-balance-t500-unisex-sneakers-shoes-white-red",
+      "description": "Originally released in 1982, the T500",
+      "excerpt": "Originally released in 1982, the T500",
+      "price": 1999000,
+      "tags": ["sneakers", "unisex", "white", "red", "new balance"],
+      "thumbnail": "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWCT500LPB00W10H-1.jpg",
+      "images": [
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWCT500LPB00W10H-1.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWCT500LPB00W10H-6.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWCT500LPB00W10H-2.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWCT500LPB00W10H-3.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWCT500LPB00W10H-4.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWCT500LPB00W10H-5.jpg"
+      ],
+      "createdAt": "2025-08-12T01:35:00.000Z",
+      "updatedAt": "2025-08-12T01:35:00.000Z"
+    },
+    {
+      "id": "20",
+      "name": "New Balance 370 Men's Sneakers Shoes - Navy",
+      "slug": "new-balance-370-mens-sneakers-shoes-navy",
+      "description": "Sepatu 370 ini merupakan versi kontempor",
+      "excerpt": "Sepatu 370 ini merupakan versi kontempor",
+      "price": 1799000,
+      "tags": ["sneakers", "men", "navy", "new balance"],
+      "thumbnail": "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU370AGNAV012-1.jpg",
+      "images": [
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU370AGNAV012-1.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU370AGNAV012-6.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU370AGNAV012-2.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU370AGNAV012-3.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU370AGNAV012-4.jpg",
+        "https://www.newbalance.co.id/media/catalog/product/cache/f5d221754f70cf0a0d7c496bb443559d/0/8/0888-NEWU370AGNAV012-5.jpg"
+      ],
+      "createdAt": "2025-08-12T01:35:00.000Z",
+      "updatedAt": "2025-08-12T01:35:00.000Z"
+    }
+  ]
+}
