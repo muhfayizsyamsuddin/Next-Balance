@@ -1,12 +1,31 @@
-"use client";
-
+"use server";
 import Link from "next/link";
-import { ArrowRight, Truck, Shield, Star, Users } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Banner from "@/components/Banner";
+import FeaturedProducts from "@/components/FeaturedProducts";
+import { ProductType } from "@/Types";
+import Footer from "@/components/Footer";
+import { homepageBanners } from "@/data/banners";
+import InfoNextBalance from "@/components/InfoNextBalance";
 
-export default function Home() {
+export default async function Home() {
+  const data = await fetch("http://localhost:3000/api/products");
+  const products: ProductType[] = await data.json();
+  console.log(products);
+
+  // Get homepage banners
+  const banners = homepageBanners();
+
   return (
     <div className="min-h-screen">
+      {/* Multiple Rotating Banners */}
+      <Banner
+        banners={banners}
+        dismissible={true}
+        rotateInterval={5000}
+        showIndicators={true}
+      />
+
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-gray-900 to-gray-800 text-white">
         <div className="absolute inset-0 bg-black opacity-40"></div>
@@ -42,13 +61,11 @@ export default function Home() {
                 <div className="bg-white rounded-xl p-6 transform -rotate-3">
                   <div className="text-center">
                     <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                      New Arrivals
+                      New Collection
                     </h3>
-                    <p className="text-gray-600 mb-4">
-                      Limited Edition Collection
-                    </p>
-                    <div className="bg-gray-100 rounded-lg h-32 flex items-center justify-center">
-                      <span className="text-4xl">👟</span>
+                    <p className="text-gray-600 mb-4">Athletic Performance</p>
+                    <div className="bg-gray-100 h-32 rounded-lg flex items-center justify-center">
+                      <span className="text-gray-500">Product Image</span>
                     </div>
                   </div>
                 </div>
@@ -59,210 +76,141 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="py-16 bg-white">
+      {/* <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Why Choose NextBalance?
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Why Choose Next Balance?
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              We&apos;re committed to delivering exceptional quality and service
-              that keeps our customers coming back.
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Experience the perfect blend of innovation, comfort, and style
+              with our premium athletic footwear collection.
             </p>
           </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center group">
-              <div className="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-red-200 transition-colors">
-                <Truck className="h-8 w-8 text-red-600" />
+              <div className="bg-red-50 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:bg-red-100 transition-colors">
+                <span className="text-2xl">🏃</span>
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                Free Shipping
+                Performance First
               </h3>
               <p className="text-gray-600">
-                Free delivery on orders over $75 worldwide
+                Engineered for athletes who demand excellence in every step.
               </p>
             </div>
+
             <div className="text-center group">
-              <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-200 transition-colors">
-                <Shield className="h-8 w-8 text-blue-600" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                Secure Payment
-              </h3>
-              <p className="text-gray-600">
-                Your payment information is always protected
-              </p>
-            </div>
-            <div className="text-center group">
-              <div className="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-yellow-200 transition-colors">
-                <Star className="h-8 w-8 text-yellow-600" />
+              <div className="bg-red-50 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:bg-red-100 transition-colors">
+                <span className="text-2xl">✨</span>
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">
                 Premium Quality
               </h3>
               <p className="text-gray-600">
-                Handcrafted with the finest materials
+                Crafted with the finest materials for unmatched durability.
               </p>
             </div>
+
             <div className="text-center group">
-              <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-green-200 transition-colors">
-                <Users className="h-8 w-8 text-green-600" />
+              <div className="bg-red-50 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:bg-red-100 transition-colors">
+                <span className="text-2xl">🎯</span>
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                24/7 Support
+                Perfect Fit
               </h3>
               <p className="text-gray-600">
-                Expert customer service whenever you need
+                Advanced sizing technology ensures comfort all day long.
+              </p>
+            </div>
+
+            <div className="text-center group">
+              <div className="bg-red-50 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:bg-red-100 transition-colors">
+                <span className="text-2xl">🌟</span>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                Style Icon
+              </h3>
+              <p className="text-gray-600">
+                Where athletic performance meets contemporary fashion.
               </p>
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
+      <InfoNextBalance />
 
       {/* Featured Products Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+      {/* <section className="py-20 bg-gray-50"> */}
+      {/* <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Featured Products
             </h2>
-            <p className="text-lg text-gray-600">
-              Discover our most popular athletic footwear
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Discover our most popular athletic footwear, loved by athletes and
+              fitness enthusiasts worldwide.
             </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Product Card 1 */}
-            <div className="bg-white rounded-lg shadow-md overflow-hidden group hover:shadow-xl transition-shadow duration-300">
-              <div className="bg-gray-200 h-64 flex items-center justify-center group-hover:bg-gray-300 transition-colors">
-                <span className="text-6xl">👟</span>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                  Athletic Runner Pro
-                </h3>
-                <p className="text-gray-600 mb-4">
-                  Premium running shoes for professional athletes
-                </p>
-                <div className="flex items-center justify-between">
-                  <span className="text-2xl font-bold text-gray-900">
-                    $149.99
-                  </span>
-                  <button className="bg-gray-900 text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors">
-                    Add to Cart
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {/* Product Card 2 */}
-            <div className="bg-white rounded-lg shadow-md overflow-hidden group hover:shadow-xl transition-shadow duration-300">
-              <div className="bg-gray-200 h-64 flex items-center justify-center group-hover:bg-gray-300 transition-colors">
-                <span className="text-6xl">🏃</span>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                  Speed Master Elite
-                </h3>
-                <p className="text-gray-600 mb-4">
-                  Lightweight design for maximum performance
-                </p>
-                <div className="flex items-center justify-between">
-                  <span className="text-2xl font-bold text-gray-900">
-                    $199.99
-                  </span>
-                  <button className="bg-gray-900 text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors">
-                    Add to Cart
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {/* Product Card 3 */}
-            <div className="bg-white rounded-lg shadow-md overflow-hidden group hover:shadow-xl transition-shadow duration-300">
-              <div className="bg-gray-200 h-64 flex items-center justify-center group-hover:bg-gray-300 transition-colors">
-                <span className="text-6xl">⚡</span>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                  Urban Street Walker
-                </h3>
-                <p className="text-gray-600 mb-4">
-                  Stylish comfort for everyday adventures
-                </p>
-                <div className="flex items-center justify-between">
-                  <span className="text-2xl font-bold text-gray-900">
-                    $129.99
-                  </span>
-                  <button className="bg-gray-900 text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors">
-                    Add to Cart
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="text-center mt-12">
-            <Link
-              href="/products"
-              className="inline-flex items-center px-8 py-4 bg-gray-900 text-white font-semibold rounded-lg hover:bg-gray-800 transition-colors duration-200"
-            >
-              View All Products
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
-          </div>
-        </div>
-      </section>
+          </div> */}
+      <FeaturedProducts products={products} />
+      {/* </div> */}
+      {/* </section> */}
 
       {/* Newsletter Section */}
-      <section className="py-16 bg-red-600">
+      <section className="py-20 bg-black text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">Stay Updated</h2>
-          <p className="text-xl text-red-100 mb-8 max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            Stay Ahead of the Game
+          </h2>
+          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
             Subscribe to our newsletter and be the first to know about new
-            arrivals, exclusive offers, and athletic insights.
+            collections, exclusive offers, and athletic insights.
           </p>
-          <div className="max-w-md mx-auto flex gap-4">
+          <div className="max-w-lg mx-auto flex flex-col sm:flex-row gap-4">
             <input
               type="email"
               placeholder="Enter your email"
-              className="flex-1 px-4 py-3 rounded-lg border-0 focus:outline-none focus:ring-2 focus:ring-white"
+              className="flex-1 px-6 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-red-500"
+              suppressHydrationWarning={true}
+              aria-label="Email address for newsletter subscription"
             />
-            <button className="bg-gray-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors">
+            <button
+              className="px-8 py-3 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition-colors"
+              suppressHydrationWarning={true}
+              aria-label="Subscribe to newsletter"
+            >
               Subscribe
             </button>
           </div>
         </div>
       </section>
-      <Banner
-        type="promo"
-        message="🎉 Free shipping on orders over $75 + Free returns"
-        linkText="Shop Now"
-        href="/products"
-        dismissible={true}
-      />
 
       {/* Stats Section */}
-      <section className="py-16 bg-gray-900 text-white">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
-              <div className="text-4xl font-bold text-red-500 mb-2">50K+</div>
-              <div className="text-gray-300">Happy Customers</div>
+              <div className="text-4xl font-bold text-red-600 mb-2">50K+</div>
+              <div className="text-gray-600">Happy Customers</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-red-500 mb-2">200+</div>
-              <div className="text-gray-300">Product Models</div>
+              <div className="text-4xl font-bold text-red-600 mb-2">15+</div>
+              <div className="text-gray-600">Years Experience</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-red-500 mb-2">15+</div>
-              <div className="text-gray-300">Years Experience</div>
+              <div className="text-4xl font-bold text-red-600 mb-2">200+</div>
+              <div className="text-gray-600">Product Variants</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-red-500 mb-2">99%</div>
-              <div className="text-gray-300">Satisfaction Rate</div>
+              <div className="text-4xl font-bold text-red-600 mb-2">99%</div>
+              <div className="text-gray-600">Satisfaction Rate</div>
             </div>
           </div>
         </div>
       </section>
+
+      <Footer />
     </div>
   );
 }

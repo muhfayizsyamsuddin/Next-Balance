@@ -179,6 +179,8 @@ export default function ProductCard({
               <button
                 onClick={handleWishlist}
                 className="p-2 bg-white rounded-full shadow-md hover:bg-gray-50 transition-colors"
+                suppressHydrationWarning={true}
+                aria-label="Add to wishlist"
               >
                 <Heart
                   className={`h-4 w-4 ${
@@ -189,6 +191,8 @@ export default function ProductCard({
               <button
                 onClick={handleQuickView}
                 className="p-2 bg-white rounded-full shadow-md hover:bg-gray-50 transition-colors"
+                suppressHydrationWarning={true}
+                aria-label="Quick view"
               >
                 <Eye className="h-4 w-4 text-gray-600" />
               </button>
@@ -201,6 +205,7 @@ export default function ProductCard({
               <button
                 onClick={handleAddToCart}
                 className="w-full bg-gray-900 text-white py-2 px-4 rounded-lg hover:bg-gray-800 transition-colors flex items-center justify-center gap-2 font-medium"
+                suppressHydrationWarning={true}
               >
                 <ShoppingCart className="h-4 w-4" />
                 Add to Cart
