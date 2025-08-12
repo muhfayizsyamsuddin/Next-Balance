@@ -30,20 +30,20 @@ export default function ProductCard({
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    onAddToCart?.(product.id);
+    onAddToCart?.(product._id);
   };
 
   const handleWishlist = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
     setIsWishlisted(!isWishlisted);
-    onAddToWishlist?.(product.id);
+    onAddToWishlist?.(product._id);
   };
 
   const handleQuickView = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    onQuickView?.(product.id);
+    onQuickView?.(product._id);
   };
 
   if (layout === "list") {
@@ -158,6 +158,7 @@ export default function ProductCard({
             <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex gap-1">
               {product.images.map((_, index) => (
                 <button
+                  suppressHydrationWarning
                   key={index}
                   onClick={(e) => {
                     e.preventDefault();

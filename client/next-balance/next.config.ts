@@ -3,7 +3,20 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   images: {
-    domains: ["www.newbalance.co.id"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "www.newbalance.co.id", // ganti ini dengan domain tempat kamu ambil gambar
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "http",
+        hostname: "localhost",
+        port: "3000",
+        pathname: "/**",
+      },
+    ],
   },
 };
 

@@ -1,3 +1,6 @@
+import ProductModel from "@/db/models/ProductModel";
+
 export async function GET() {
-  return Response.json({ message: "Hello, World!" });
+  const products = await ProductModel.getAllProducts();
+  return Response.json(products);
 }
