@@ -128,9 +128,12 @@ export default function Navbar() {
               </div>
 
               {/* Wishlist */}
-              <button className="p-2 text-gray-700 hover:text-gray-900">
+              <Link
+                href="/wishlists"
+                className="p-2 text-gray-700 hover:text-gray-900"
+              >
                 <Heart size={20} />
-              </button>
+              </Link>
 
               {/* Shopping Bag */}
               <button className="p-2 text-gray-700 hover:text-gray-900 relative">
