@@ -1,16 +1,36 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { Eye, EyeOff, ArrowRight } from "lucide-react";
+import toast from "react-hot-toast";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsLoading(true);
+    try {
+      setIsLoading(true);
+      const response = await fetch("/api/login", {
+        method: "POST",
+        body: JSON.stringify({ email, password }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (!response.ok) {
+        throw await response.json();
+      }
+      const result = await response.json();
+      toast.success("Login successful");
+      console.log("Login successful:", result);
+    } catch (err) {
+      toast.error((err as Error).message);
+    }
 
     // Simulate API call
     setTimeout(() => {
@@ -51,6 +71,8 @@ export default function Login() {
               <input
                 id="email"
                 name="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 type="email"
                 autoComplete="email"
                 required
@@ -71,6 +93,8 @@ export default function Login() {
                 <input
                   id="password"
                   name="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   type={showPassword ? "text" : "password"}
                   autoComplete="current-password"
                   required

@@ -1,7 +1,7 @@
 import { NewUserType } from "@/Types";
 import { database } from "../config/mongodb";
 import * as z from "zod";
-import { comparePassword, hashPassword } from "@/helpers/bcrypt";
+import { hashPassword } from "@/helpers/bcrypt";
 // import errHandler from "@/helpers/errHandler";
 
 const UserSchema = z.object({
@@ -18,7 +18,7 @@ const UserSchema = z.object({
 
 class UserModel {
   static collection() {
-    return database.collection("users");
+    return database.collection<NewUserType>("users");
   }
 
   static async registerUser(newUser: NewUserType) {
@@ -46,21 +46,9 @@ class UserModel {
     };
   }
 
-  static async loginUser(email: string, password: string) {
-    const user = await this.collection().find({ email: email }).toArray();
-    if (user.length === 0) {
-      throw { message: "Invalid email or password", status: 401 };
-    }
-    const isPasswordValid = comparePassword(password, user[0].password);
-    if (!isPasswordValid) {
-      throw { message: "Invalid email or password", status: 401 };
-    }
-    return {
-      _id: user[0]._id,
-      username: user[0].username,
-      name: user[0].name,
-      email: user[0].email,
-    };
+  static async loginUser(email: string) {
+    const user = await this.collection().findOne({ email });
+    return user;
   }
 }
 
