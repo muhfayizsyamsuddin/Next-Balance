@@ -32,6 +32,12 @@ class WishlistModel {
         },
       },
       {
+        $unwind: {
+          path: "$product",
+          preserveNullAndEmptyArrays: true,
+        },
+      },
+      {
         $lookup: {
           from: "users",
           localField: "userId",
