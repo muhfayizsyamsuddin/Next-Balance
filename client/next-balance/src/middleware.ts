@@ -8,7 +8,7 @@ export async function middleware(req: NextRequest) {
   try {
     const cookieStore = await cookies();
     const authorization = cookieStore.get("Authorization");
-    console.log("Authorization cookie:", authorization);
+    // console.log("Authorization cookie:", authorization);
     if (!authorization) {
       return new Response("Unauthorized", { status: 401 });
     }
@@ -20,7 +20,7 @@ export async function middleware(req: NextRequest) {
       throw { message: "Token not provided", status: 401 };
     }
     const decoded = await verifyTokenWithJose(token);
-    console.log("Decoded token:", decoded);
+    // console.log("Decoded token:", decoded);
 
     const requestHeaders = new Headers(req.headers);
     requestHeaders.set("x-user-id", decoded.id);

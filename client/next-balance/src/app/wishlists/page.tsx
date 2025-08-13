@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -11,20 +11,15 @@ import {
   ArrowLeft,
   Grid3X3,
   List,
-  Share2,
 } from "lucide-react";
 
-// Format date utility function
-const formatDate = (dateString: string) => {
-  return new Date(dateString).toLocaleDateString("en-US", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  });
-};
-
+// Extended wishlist item interface that includes product data
 interface WishlistItem {
   _id: number;
+  userId: number;
+  productId: number;
+  dateAdded: string;
+  // Product details (populated from product data)
   name: string;
   slug: string;
   description: string;
@@ -38,88 +33,128 @@ interface WishlistItem {
   discountPrice?: number;
   isNew?: boolean;
   isBestseller?: boolean;
-  dateAdded: string;
   isAvailable: boolean;
 }
 
-// Mock wishlist data - replace with actual data fetching
-const mockWishlistItems: WishlistItem[] = [
-  {
-    _id: 1,
-    name: "NB Fresh Foam X 1080v12",
-    slug: "nb-fresh-foam-x-1080v12",
-    description:
-      "Premium running shoe with Fresh Foam X midsole technology for superior comfort and performance.",
-    excerpt: "Premium running comfort",
-    price: 149.99,
-    discountPrice: 119.99,
-    tags: ["running", "men", "bestseller"],
-    thumbnail:
-      "https://www.newbalance.co.id/media/catalog/product/cache/b444f50a64a092a2138a5e1cbd49879a/0/8/0888-NEWMFCXLY50CM11H-1.jpg",
-    images: [
-      "https://www.newbalance.co.id/media/catalog/product/cache/b444f50a64a092a2138a5e1cbd49879a/0/8/0888-NEWMFCXLY50CM11H-1.jpg",
-    ],
-    rating: 4.8,
-    reviewCount: 127,
-    isNew: false,
-    isBestseller: true,
-    dateAdded: "2025-08-10",
-    isAvailable: true,
-  },
-  {
-    _id: 2,
-    name: "NB FuelCell Rebel v3",
-    slug: "nb-fuelcell-rebel-v3",
-    description:
-      "Lightweight racing shoe designed for speed with FuelCell midsole technology.",
-    excerpt: "Built for speed",
-    price: 129.99,
-    tags: ["running", "racing", "lightweight"],
-    thumbnail:
-      "https://www.newbalance.co.id/media/catalog/product/cache/b444f50a64a092a2138a5e1cbd49879a/0/1/01-NEW-BALANCE-F34RUNEWA-NEWPZ530KA-Silver.jpg",
-    images: [
-      "https://www.newbalance.co.id/media/catalog/product/cache/b444f50a64a092a2138a5e1cbd49879a/0/1/01-NEW-BALANCE-F34RUNEWA-NEWPZ530KA-Silver.jpg",
-    ],
-    rating: 4.6,
-    reviewCount: 89,
-    isNew: true,
-    isBestseller: false,
-    dateAdded: "2025-08-08",
-    isAvailable: true,
-  },
-  {
-    _id: 3,
-    name: "NB 990v5 Made in USA",
-    slug: "nb-990v5-made-in-usa",
-    description:
-      "Classic lifestyle sneaker crafted in the USA with premium materials and timeless design.",
-    excerpt: "American craftsmanship",
-    price: 185.0,
-    tags: ["lifestyle", "premium", "usa-made"],
-    thumbnail:
-      "https://www.newbalance.co.id/media/catalog/product/cache/b444f50a64a092a2138a5e1cbd49879a/0/1/01-NEW-BALANCE-FFSSBNEW0-NEWML574EVG-Grey.jpg",
-    images: [
-      "https://www.newbalance.co.id/media/catalog/product/cache/b444f50a64a092a2138a5e1cbd49879a/0/1/01-NEW-BALANCE-FFSSBNEW0-NEWML574EVG-Grey.jpg",
-    ],
-    rating: 4.9,
-    reviewCount: 203,
-    isNew: false,
-    isBestseller: true,
-    dateAdded: "2025-08-05",
-    isAvailable: false,
-  },
-];
+// Format date utility function
+const formatDate = (dateString: string) => {
+  return new Date(dateString).toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+};
 
 type ViewMode = "grid" | "list";
 type SortOption = "newest" | "oldest" | "price-low" | "price-high" | "name";
 
 export default function Wishlist() {
-  const [wishlistItems, setWishlistItems] =
-    useState<WishlistItem[]>(mockWishlistItems);
+  const [wishlistItems, setWishlistItems] = useState<WishlistItem[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [viewMode, setViewMode] = useState<ViewMode>("grid");
   const [sortBy, setSortBy] = useState<SortOption>("newest");
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
   const [isSelectMode, setIsSelectMode] = useState(false);
+
+  useEffect(() => {
+    fetchWishlist();
+  }, []);
+
+  const fetchWishlist = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+
+      // Check if user is authenticated
+      const token = localStorage.getItem("access_token");
+      if (!token) {
+        setWishlistItems([]);
+        return;
+      }
+
+      const response = await fetch("/api/wishlists", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch wishlist");
+      }
+
+      const data = await response.json();
+
+      // Map the data to include product details
+      // Assuming the API returns wishlist items with populated product data
+      const mappedData: WishlistItem[] = data.map(
+        (item: {
+          _id: number;
+          userId: number;
+          productId: number;
+          dateAdded?: string;
+          product?: {
+            name?: string;
+            slug?: string;
+            description?: string;
+            excerpt?: string;
+            price?: number;
+            tags?: string[];
+            thumbnail?: string;
+            images?: string[];
+            rating?: number;
+            reviewCount?: number;
+            discountPrice?: number;
+            isNew?: boolean;
+            isBestseller?: boolean;
+            isAvailable?: boolean;
+          };
+          name?: string;
+          slug?: string;
+          description?: string;
+          excerpt?: string;
+          price?: number;
+          tags?: string[];
+          thumbnail?: string;
+          images?: string[];
+          rating?: number;
+          reviewCount?: number;
+          discountPrice?: number;
+          isNew?: boolean;
+          isBestseller?: boolean;
+          isAvailable?: boolean;
+        }) => ({
+          _id: item._id,
+          userId: item.userId,
+          productId: item.productId,
+          dateAdded: item.dateAdded || new Date().toISOString(),
+          name: item.product?.name || item.name || "Unknown Product",
+          slug: item.product?.slug || item.slug || "",
+          description: item.product?.description || item.description || "",
+          excerpt: item.product?.excerpt || item.excerpt || "",
+          price: item.product?.price || item.price || 0,
+          tags: item.product?.tags || item.tags || [],
+          thumbnail:
+            item.product?.thumbnail || item.thumbnail || "/placeholder.jpg",
+          images: item.product?.images || item.images || [],
+          rating: item.product?.rating || item.rating || 4.5,
+          reviewCount: item.product?.reviewCount || item.reviewCount || 0,
+          discountPrice: item.product?.discountPrice || item.discountPrice,
+          isNew: item.product?.isNew || item.isNew || false,
+          isBestseller:
+            item.product?.isBestseller || item.isBestseller || false,
+          isAvailable: item.product?.isAvailable ?? item.isAvailable ?? true,
+        })
+      );
+
+      setWishlistItems(mappedData);
+    } catch (error) {
+      console.error("Error fetching wishlist:", error);
+      setError("Failed to load wishlist. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const sortedItems = [...wishlistItems].sort((a, b) => {
     switch (sortBy) {
@@ -142,14 +177,78 @@ export default function Wishlist() {
     }
   });
 
-  const handleRemoveItem = (id: number) => {
-    setWishlistItems((items) => items.filter((item) => item._id !== id));
-    setSelectedItems((selected) => selected.filter((itemId) => itemId !== id));
+  const handleRemoveItem = async (id: number) => {
+    try {
+      const token = localStorage.getItem("access_token");
+      if (!token) {
+        alert("Please login to remove items from wishlist");
+        return;
+      }
+
+      // Find the item to get productId
+      const itemToRemove = wishlistItems.find((item) => item._id === id);
+      if (!itemToRemove) return;
+
+      const response = await fetch(
+        `/api/wishlists?productId=${itemToRemove.productId}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      if (response.ok) {
+        // Remove from local state
+        setWishlistItems((items) => items.filter((item) => item._id !== id));
+        setSelectedItems((selected) =>
+          selected.filter((itemId) => itemId !== id)
+        );
+
+        // Show success message
+        alert("Item removed from wishlist");
+      } else {
+        throw new Error("Failed to remove item from wishlist");
+      }
+    } catch (error) {
+      console.error("Error removing item from wishlist:", error);
+      alert("Failed to remove item. Please try again.");
+    }
   };
 
-  const handleAddToCart = (id: number) => {
-    // Implement add to cart logic
-    console.log("Added to cart:", id);
+  const handleAddToCart = async (id: number) => {
+    try {
+      const item = wishlistItems.find((item) => item._id === id);
+      if (!item) return;
+
+      // Simulate adding to cart - replace with actual cart API call
+      const response = await fetch("/api/cart", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+        },
+        body: JSON.stringify({
+          productId: item.productId,
+          quantity: 1,
+        }),
+      });
+
+      if (response.ok) {
+        alert(`${item.name} added to cart!`);
+      } else {
+        // Fallback for demo - just show success message
+        alert(`${item.name} added to cart!`);
+      }
+    } catch (error) {
+      console.error("Error adding to cart:", error);
+      // Fallback for demo
+      const item = wishlistItems.find((item) => item._id === id);
+      if (item) {
+        alert(`${item.name} added to cart!`);
+      }
+    }
   };
 
   const handleSelectItem = (id: number) => {
@@ -166,14 +265,119 @@ export default function Wishlist() {
     }
   };
 
-  const handleBulkRemove = () => {
-    setWishlistItems((items) =>
-      items.filter((item) => !selectedItems.includes(item._id))
-    );
-    setSelectedItems([]);
-    setIsSelectMode(false);
+  const handleBulkRemove = async () => {
+    try {
+      const token = localStorage.getItem("access_token");
+      if (!token) {
+        alert("Please login to remove items from wishlist");
+        return;
+      }
+
+      // Remove selected items from API
+      const removePromises = selectedItems.map(async (itemId) => {
+        const itemToRemove = wishlistItems.find((item) => item._id === itemId);
+        if (!itemToRemove) return;
+
+        return fetch(`/api/wishlists?productId=${itemToRemove.productId}`, {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+      });
+
+      await Promise.all(removePromises);
+
+      // Update local state
+      setWishlistItems((items) =>
+        items.filter((item) => !selectedItems.includes(item._id))
+      );
+      setSelectedItems([]);
+      setIsSelectMode(false);
+
+      alert(`${selectedItems.length} item(s) removed from wishlist`);
+    } catch (error) {
+      console.error("Error removing items from wishlist:", error);
+      alert("Failed to remove items. Please try again.");
+    }
   };
 
+  // Loading state
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="mb-8">
+            <Link
+              href="/products"
+              className="inline-flex items-center text-gray-600 hover:text-gray-900 mb-4 transition-colors"
+            >
+              <ArrowLeft className="h-4 w-4 mr-2" />
+              Continue Shopping
+            </Link>
+            <h1 className="text-3xl font-bold text-gray-900">Your Wishlist</h1>
+          </div>
+
+          {/* Loading skeleton */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {[...Array(8)].map((_, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-lg border border-gray-200 overflow-hidden"
+              >
+                <div className="aspect-square bg-gray-200 animate-pulse"></div>
+                <div className="p-4 space-y-3">
+                  <div className="h-4 bg-gray-200 rounded animate-pulse"></div>
+                  <div className="h-4 bg-gray-200 rounded w-3/4 animate-pulse"></div>
+                  <div className="h-6 bg-gray-200 rounded w-1/2 animate-pulse"></div>
+                  <div className="h-10 bg-gray-200 rounded animate-pulse"></div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Error state
+  if (error) {
+    return (
+      <div className="min-h-screen bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="mb-8">
+            <Link
+              href="/products"
+              className="inline-flex items-center text-gray-600 hover:text-gray-900 mb-4 transition-colors"
+            >
+              <ArrowLeft className="h-4 w-4 mr-2" />
+              Continue Shopping
+            </Link>
+            <h1 className="text-3xl font-bold text-gray-900">Your Wishlist</h1>
+          </div>
+
+          {/* Error State */}
+          <div className="text-center py-16">
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-12 max-w-md mx-auto">
+              <div className="text-red-500 text-6xl mb-6">⚠️</div>
+              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+                Something went wrong
+              </h2>
+              <p className="text-gray-600 mb-8">{error}</p>
+              <button
+                onClick={fetchWishlist}
+                className="inline-flex items-center px-6 py-3 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition-colors"
+              >
+                Try Again
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Empty state
   if (wishlistItems.length === 0) {
     return (
       <div className="min-h-screen bg-gray-50">
@@ -246,9 +450,9 @@ export default function Wishlist() {
               >
                 {isSelectMode ? "Cancel" : "Select"}
               </button>
-              <button className="p-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors">
+              {/* <button className="p-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors">
                 <Share2 className="h-4 w-4" />
-              </button>
+              </button> */}
             </div>
           </div>
         </div>

@@ -42,3 +42,24 @@ export async function GET(request: Request) {
     return errHandler(err);
   }
 }
+
+export async function DELETE(request: Request) {
+  try {
+    const body = await request.json();
+    const { productId }: { productId: string } = body;
+    if (!productId) {
+      throw { message: "Product ID is required", status: 400 };
+    }
+    const userId = request.headers.get("x-user-id");
+    if (!userId) {
+      throw { message: "Unauthorized", status: 401 };
+    }
+    await WishlistModel.removeWishlistItem(userId, productId);
+    return Response.json(
+      { message: "Item removed from wishlist" },
+      { status: 200 }
+    );
+  } catch (err) {
+    return errHandler(err);
+  }
+}
