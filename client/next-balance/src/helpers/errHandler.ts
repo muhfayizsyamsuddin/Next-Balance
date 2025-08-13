@@ -8,6 +8,6 @@ export default function errHandler(err: unknown) {
   if (error instanceof z.ZodError) {
     message = error.issues.map((issue) => issue.message).join(", ");
     status = 400; // Bad Request
-    return Response.json({ message: message }, { status: status });
   }
+  return Response.json({ message: message }, { status: status });
 }

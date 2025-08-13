@@ -5,7 +5,7 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
     const result = await UserModel.registerUser(body);
-    return Response.json(result);
+    return Response.json(result, { status: 201 });
   } catch (err) {
     return errHandler(err);
   }
