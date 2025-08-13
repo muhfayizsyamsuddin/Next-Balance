@@ -1,3 +1,5 @@
+"use server";
+
 import { ProductType } from "@/Types";
 import Image from "next/image";
 
