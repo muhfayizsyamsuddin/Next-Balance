@@ -401,6 +401,7 @@ export default function Wishlist() {
         <div className="mb-8">
           <Link
             href="/products"
+            // href={`/products/${item.product.slug}`}
             className="inline-flex items-center text-gray-600 hover:text-gray-900 mb-4 transition-colors"
           >
             <ArrowLeft className="h-4 w-4 mr-2" />
@@ -539,7 +540,7 @@ export default function Wishlist() {
                 )}
 
                 {/* Gambar Produk */}
-                <Link href={`/products/${item.productId}`}>
+                <Link href={`/products/${item.product.slug}`}>
                   <div className="aspect-square bg-gray-100 overflow-hidden">
                     <Image
                       src={item.product.thumbnail}
@@ -604,7 +605,7 @@ export default function Wishlist() {
 
                 {/* Gambar Produk */}
                 <Link
-                  href={`/products/${item.productId}`}
+                  href={`/products/${item.product.slug}`}
                   className="w-32 h-32 bg-gray-100 flex-shrink-0"
                 >
                   <Image
@@ -632,7 +633,7 @@ export default function Wishlist() {
 
                 <div className="p-4">
                   <Link
-                    href={`/products/${item.productId}`}
+                    href={`/products/${item.product.slug}`}
                     className="inline-block px-4 py-2 bg-red-600 text-white text-sm rounded-lg hover:bg-red-700 transition"
                   >
                     Lihat
