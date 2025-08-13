@@ -4,8 +4,11 @@ import Link from "next/link";
 import { FormEvent, useState } from "react";
 import { Eye, EyeOff, ArrowRight } from "lucide-react";
 import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
+// import { redirect } from "next/navigation";
 
 export default function Login() {
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState("");
@@ -28,6 +31,7 @@ export default function Login() {
       const result = await response.json();
       toast.success("Login successful");
       console.log("Login successful:", result);
+      router.push("/");
     } catch (err) {
       toast.error((err as Error).message);
     }
@@ -76,7 +80,7 @@ export default function Login() {
                 type="email"
                 autoComplete="email"
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200"
+                className="w-full px-4 py-3 border border-gray-400 rounded-lg shadow-sm placeholder-gray-500 text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent transition-all duration-200"
                 placeholder="Enter your email"
               />
             </div>
@@ -98,7 +102,7 @@ export default function Login() {
                   type={showPassword ? "text" : "password"}
                   autoComplete="current-password"
                   required
-                  className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200"
+                  className="w-full px-4 py-3 pr-12 border border-gray-400 rounded-lg shadow-sm placeholder-gray-500 text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent transition-all duration-200"
                   placeholder="Enter your password"
                 />
                 <button
