@@ -44,6 +44,12 @@ export default function AddWishlist({
         body: JSON.stringify({ productId }),
       });
 
+      if (response.status === 401) {
+        toast.error("You must be logged in to use wishlist.");
+        setIsLoading(false);
+        return;
+      }
+
       if (!response.ok) {
         throw new Error(
           `Failed to ${inWishlist ? "remove from" : "add to"} wishlist`

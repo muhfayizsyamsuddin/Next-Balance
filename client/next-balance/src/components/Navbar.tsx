@@ -1,13 +1,29 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Search, ShoppingBag, User, Menu, X, Heart } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { LogOut } from "@/actions";
 
 export default function Navbar() {
+  const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
-  console.log("Navbar rendered");
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  // console.log("Navbar rendered");
+  const handleLogout = async () => {
+    await LogOut(); // panggil server action untuk hapus cookie
+    setIsLoggedIn(false);
+    router.push("/login"); // redirect ke halaman login
+  };
+
+  useEffect(() => {
+    // Cek cookie Authorization di client
+    const isAuth = document.cookie.includes("Authorization=");
+    setIsLoggedIn(isAuth);
+  }, []);
+
   return (
     <>
       {/* Top Banner */}
@@ -106,24 +122,36 @@ export default function Navbar() {
                 </button>
                 {/* Account dropdown */}
                 <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                  <Link
-                    href="/login"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  >
-                    Sign In
-                  </Link>
-                  <Link
-                    href="/register"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  >
-                    Create Account
-                  </Link>
-                  <Link
-                    href="/account"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  >
-                    My Account
-                  </Link>
+                  {!isLoggedIn ? (
+                    <>
+                      <Link
+                        href="/login"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >
+                        Sign In
+                      </Link>
+                      <Link
+                        href="/register"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >
+                        Create Account
+                      </Link>
+                    </>
+                  ) : (
+                    <>
+                      <button
+                        className="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100"
+                        onClick={handleLogout}
+                        // onClick={async () => {
+                        // await LogOut(); // panggil server action untuk hapus cookie
+                        // setIsLoggedIn(false);
+                        // router.push("/login"); // redirect ke halaman login
+                        // }}
+                      >
+                        Logout
+                      </button>
+                    </>
+                  )}
                 </div>
               </div>
 

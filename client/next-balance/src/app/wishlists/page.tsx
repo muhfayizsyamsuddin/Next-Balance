@@ -45,6 +45,11 @@ export default function Wishlist() {
         method: "GET",
         credentials: "include", // memastikan cookie dikirim
       });
+      if (res.status === 401) {
+        setError("You must be logged in to view your wishlist.");
+        setWishlistItems([]);
+        return;
+      }
       const data = await res.json();
       if (!res.ok) {
         throw new Error("Failed to fetch wishlist");
@@ -54,6 +59,7 @@ export default function Wishlist() {
     } catch (error) {
       console.error("Error fetching wishlist:", error);
       setError("Failed to load wishlist. Please try again.");
+      //   toast.error("Failed to load wishlist. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -169,35 +175,16 @@ export default function Wishlist() {
   // Error state
   if (error) {
     return (
-      <div className="min-h-screen bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="mb-8">
-            <Link
-              href="/products"
-              className="inline-flex items-center text-gray-600 hover:text-gray-900 mb-4 transition-colors"
-            >
-              <ArrowLeft className="h-4 w-4 mr-2" />
-              Continue Shopping
-            </Link>
-            <h1 className="text-3xl font-bold text-gray-900">Your Wishlist</h1>
-          </div>
-
-          {/* Error State */}
-          <div className="text-center py-16">
-            <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-12 max-w-md mx-auto">
-              <div className="text-red-500 text-6xl mb-6">⚠️</div>
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-                Something went wrong
-              </h2>
-              <p className="text-gray-600 mb-8">{error}</p>
-              <button
-                onClick={fetchWishlist}
-                className="inline-flex items-center px-6 py-3 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition-colors"
-              >
-                Try Again
-              </button>
-            </div>
-          </div>
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="bg-white rounded-lg shadow p-8 text-center max-w-md">
+          <h2 className="text-xl font-bold mb-4 text-black">Wishlist</h2>
+          <p className="text-red-600 mb-4">{error}</p>
+          <Link
+            href="/login"
+            className="inline-block px-2 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition"
+          >
+            Login to Continue
+          </Link>
         </div>
       </div>
     );
