@@ -12,15 +12,7 @@ import {
   List,
 } from "lucide-react";
 import { WishlistType } from "@/Types";
-
-// Format date utility function
-// const formatDate = (dateString: string) => {
-//   return new Date(dateString).toLocaleDateString("en-US", {
-//     month: "short",
-//     day: "numeric",
-//     year: "numeric",
-//   });
-// };
+import toast from "react-hot-toast";
 
 type ViewMode = "grid" | "list";
 type SortOption = "newest" | "oldest" | "price-low" | "price-high" | "name";
@@ -51,7 +43,10 @@ export default function Wishlist() {
       setError(null);
 
       // Check if user is authenticated
-      const res = await fetch("http://localhost:3000/api/wishlists");
+      const res = await fetch("http://localhost:3000/api/wishlists", {
+        method: "GET",
+        credentials: "include", // memastikan cookie dikirim
+      });
       const data = await res.json();
       if (!res.ok) {
         throw new Error("Failed to fetch wishlist");
@@ -131,106 +126,33 @@ export default function Wishlist() {
     }
   };
 
-  //   const sortedItems = [...wishlistItems].sort((a, b) => {
-  //     switch (sortBy) {
-  //       case "newest":
-  //         return (
-  //           new Date(b.dateAdded).getTime() - new Date(a.dateAdded).getTime()
-  //         );
-  //       case "oldest":
-  //         return (
-  //           new Date(a.dateAdded).getTime() - new Date(b.dateAdded).getTime()
-  //         );
-  //       case "price-low":
-  //         return (a.discountPrice || a.price) - (b.discountPrice || b.price);
-  //       case "price-high":
-  //         return (b.discountPrice || b.price) - (a.discountPrice || a.price);
-  //       case "name":
-  //         return a.name.localeCompare(b.name);
-  //       default:
-  //         return 0;
-  //     }
-  //   });
+  const handleRemoveItem = async (productId: string) => {
+    try {
+      const confirmed = confirm("Are you sure you want to remove this item?");
+      if (!confirmed) return;
 
-  //   const handleRemoveItem = async (id: number) => {
-  //     try {
-  //       const token = localStorage.getItem("access_token");
-  //       if (!token) {
-  //         alert("Please login to remove items from wishlist");
-  //         return;
-  //       }
+      const response = await fetch(`/api/wishlists`, {
+        method: "DELETE",
+        credentials: "include", // memastikan cookie dikirim
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ productId }),
+      });
 
-  //       // Find the item to get productId
-  //       const itemToRemove = wishlistItems.find((item) => item._id === id);
-  //       if (!itemToRemove) return;
+      if (!response.ok) {
+        throw new Error("Failed to remove item from wishlist");
+      }
+      setWishlistItems((items) =>
+        items.filter((item) => item.productId !== productId)
+      );
 
-  //       const response = await fetch(
-  //         `/api/wishlists?productId=${itemToRemove.productId}`,
-  //         {
-  //           method: "DELETE",
-  //           headers: {
-  //             Authorization: `Bearer ${token}`,
-  //           },
-  //         }
-  //       );
-
-  //       if (response.ok) {
-  //         // Remove from local state
-  //         setWishlistItems((items) => items.filter((item) => item._id !== id));
-  //         setSelectedItems((selected) =>
-  //           selected.filter((itemId) => itemId !== id)
-  //         );
-
-  //         // Show success message
-  //         alert("Item removed from wishlist");
-  //       } else {
-  //         throw new Error("Failed to remove item from wishlist");
-  //       }
-  //     } catch (error) {
-  //       console.error("Error removing item from wishlist:", error);
-  //       alert("Failed to remove item. Please try again.");
-  //     }
-  //   };
-
-  //   const handleAddToCart = async (id: number) => {
-  //     try {
-  //       const item = wishlistItems.find((item) => item._id === id);
-  //       if (!item) return;
-
-  //       // Simulate adding to cart - replace with actual cart API call
-  //       const response = await fetch("/api/cart", {
-  //         method: "POST",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //           Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-  //         },
-  //         body: JSON.stringify({
-  //           productId: item.productId,
-  //           quantity: 1,
-  //         }),
-  //       });
-
-  //       if (response.ok) {
-  //         alert(`${item.name} added to cart!`);
-  //       } else {
-  //         // Fallback for demo - just show success message
-  //         alert(`${item.name} added to cart!`);
-  //       }
-  //     } catch (error) {
-  //       console.error("Error adding to cart:", error);
-  //       // Fallback for demo
-  //       const item = wishlistItems.find((item) => item._id === id);
-  //       if (item) {
-  //         alert(`${item.name} added to cart!`);
-  //       }
-  //     }
-  //   };
-
-  //   const handleSelectItem = (id: number) => {
-  //     setSelectedItems((prev) =>
-  //       prev.includes(id) ? prev.filter((itemId) => itemId !== id) : [...prev, id]
-  //     );
-  //   };
+      toast.success("Item removed from wishlist");
+    } catch (err) {
+      console.error("Error removing item from wishlist:", err);
+      toast.error("Failed to remove item from wishlist");
+    }
+  };
 
   const handleSelectAll = () => {
     if (selectedItems.length === wishlistItems.length) {
@@ -242,28 +164,22 @@ export default function Wishlist() {
 
   const handleBulkRemove = async () => {
     try {
-      const token = localStorage.getItem("access_token");
-      if (!token) {
-        alert("Please login to remove items from wishlist");
-        return;
-      }
-
-      // Remove selected items from API
       const removePromises = selectedItems.map(async (itemId) => {
         const itemToRemove = wishlistItems.find((item) => item._id === itemId);
         if (!itemToRemove) return;
 
-        return fetch(`/api/wishlists?productId=${itemToRemove.productId}`, {
+        return fetch(`/api/wishlists`, {
           method: "DELETE",
+          credentials: "include", // <-- ini penting
           headers: {
-            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
           },
+          body: JSON.stringify({ productId: itemToRemove.productId }),
         });
       });
 
       await Promise.all(removePromises);
 
-      // Update local state
       setWishlistItems((items) =>
         items.filter((item) => !selectedItems.includes(item._id))
       );
@@ -512,8 +428,9 @@ export default function Wishlist() {
           </div>
         </div>
 
+        {/* Wishlist Items Rendering */}
         {viewMode === "grid" ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {wishlistItems.map((item) => (
               <div
                 key={item._id}
@@ -537,6 +454,17 @@ export default function Wishlist() {
                       className="w-4 h-4 text-red-600 focus:ring-red-500 border-gray-300 rounded"
                     />
                   </div>
+                )}
+
+                {/* Remove button */}
+                {!isSelectMode && (
+                  <button
+                    onClick={() => handleRemoveItem(item.productId)}
+                    className="absolute top-2 right-2 bg-white rounded-full p-2 shadow hover:bg-red-100 transition"
+                    title="Remove from wishlist"
+                  >
+                    <Trash2 className="h-4 w-4 text-red-600" />
+                  </button>
                 )}
 
                 {/* Gambar Produk */}
@@ -643,262 +571,7 @@ export default function Wishlist() {
             ))}
           </div>
         )}
-
-        {/* Items Grid/List */}
-        {/* {viewMode === "grid" ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {sortedItems.map((item) => (
-              <WishlistItemCard
-                key={item._id}
-                item={item}
-                isSelectMode={isSelectMode}
-                isSelected={selectedItems.includes(item._id)}
-                onRemove={handleRemoveItem}
-                onAddToCart={handleAddToCart}
-                onSelect={handleSelectItem}
-              />
-            ))}
-          </div>
-        ) : (
-          <div className="space-y-4">
-            {sortedItems.map((item) => (
-              <WishlistItemRow
-                key={item._id}
-                item={item}
-                isSelectMode={isSelectMode}
-                isSelected={selectedItems.includes(item._id)}
-                onRemove={handleRemoveItem}
-                onAddToCart={handleAddToCart}
-                onSelect={handleSelectItem}
-              />
-            ))}
-          </div>
-        )} */}
       </div>
     </div>
   );
 }
-
-// Grid Item Component
-// interface WishlistItemProps {
-//   item: WishlistItem;
-//   isSelectMode: boolean;
-//   isSelected: boolean;
-//   onRemove: (id: number) => void;
-//   onAddToCart: (id: number) => void;
-//   onSelect: (id: number) => void;
-// }
-
-// function WishlistItemCard({
-//   item,
-//   isSelectMode,
-//   isSelected,
-//   onRemove,
-//   onAddToCart,
-//   onSelect,
-// }: WishlistItemProps) {
-//   const handleRemove = (e: React.MouseEvent) => {
-//     e.preventDefault();
-//     e.stopPropagation();
-//     onRemove(item._id);
-//   };
-
-//   const handleAddToCart = (e: React.MouseEvent) => {
-//     e.preventDefault();
-//     e.stopPropagation();
-//     onAddToCart(item._id);
-//   };
-
-//   const handleSelect = (e: React.MouseEvent) => {
-//     e.preventDefault();
-//     e.stopPropagation();
-//     onSelect(item._id);
-//   };
-
-//   return (
-//     <div
-//       className={`bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300 ${
-//         isSelectMode ? "ring-2 ring-gray-200" : ""
-//       } ${isSelected ? "ring-red-500" : ""}`}
-//     >
-//       {/* Select Checkbox */}
-//       {isSelectMode && (
-//         <div className="p-3 border-b border-gray-100">
-//           <button
-//             onClick={handleSelect}
-//             className={`w-5 h-5 rounded border-2 flex items-center justify-center ${
-//               isSelected ? "bg-red-600 border-red-600" : "border-gray-300"
-//             }`}
-//           >
-//             {isSelected && <div className="w-2 h-2 bg-white rounded-sm"></div>}
-//           </button>
-//         </div>
-//       )}
-
-//       <Link href={`/products/${item.slug}`} className="block">
-//         {/* Image */}
-//         <div className="relative aspect-square">
-//           <Image
-//             src={item.thumbnail}
-//             alt={item.name}
-//             fill
-//             className="object-cover"
-//           />
-//           {!item.isAvailable && (
-//             <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-//               <span className="text-white font-semibold">Out of Stock</span>
-//             </div>
-//           )}
-//           {item.isNew && (
-//             <span className="absolute top-3 left-3 bg-red-600 text-white text-xs font-semibold px-2 py-1 rounded">
-//               NEW
-//             </span>
-//           )}
-//         </div>
-
-//         {/* Content */}
-//         <div className="p-4">
-//           <h3 className="font-semibold text-gray-900 mb-2 line-clamp-2">
-//             {item.name}
-//           </h3>
-//           <p className="text-sm text-gray-600 mb-3 line-clamp-2">
-//             {item.excerpt}
-//           </p>
-
-//           {/* Price */}
-
-//           {/* Date Added */}
-//           <p className="text-xs text-gray-500 mb-4">
-//             Added {formatDate(item.dateAdded)}
-//           </p>
-
-//           {/* Actions */}
-//           <div className="flex gap-2">
-//             <button
-//               onClick={handleAddToCart}
-//               disabled={!item.isAvailable}
-//               className={`flex-1 inline-flex items-center justify-center px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
-//                 item.isAvailable
-//                   ? "bg-red-600 text-white hover:bg-red-700"
-//                   : "bg-gray-100 text-gray-400 cursor-not-allowed"
-//               }`}
-//             >
-//               <ShoppingCart className="h-4 w-4 mr-2" />
-//               {item.isAvailable ? "Add to Cart" : "Out of Stock"}
-//             </button>
-//             <button
-//               onClick={handleRemove}
-//               className="p-2 text-gray-600 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
-//             >
-//               <Trash2 className="h-4 w-4" />
-//             </button>
-//           </div>
-//         </div>
-//       </Link>
-//     </div>
-//   );
-// }
-
-// List Item Component
-// function WishlistItemRow({
-//   item,
-//   isSelectMode,
-//   isSelected,
-//   onRemove,
-//   onAddToCart,
-//   onSelect,
-// }: WishlistItemProps) {
-//   const handleRemove = (e: React.MouseEvent) => {
-//     e.preventDefault();
-//     e.stopPropagation();
-//     onRemove(item._id);
-//   };
-
-//   const handleAddToCart = (e: React.MouseEvent) => {
-//     e.preventDefault();
-//     e.stopPropagation();
-//     onAddToCart(item._id);
-//   };
-
-//   const handleSelect = (e: React.MouseEvent) => {
-//     e.preventDefault();
-//     e.stopPropagation();
-//     onSelect(item._id);
-//   };
-
-//   return (
-//     <div
-//       className={`bg-white rounded-lg border border-gray-200 p-4 hover:shadow-md transition-all duration-300 ${
-//         isSelectMode ? "ring-2 ring-gray-200" : ""
-//       } ${isSelected ? "ring-red-500" : ""}`}
-//     >
-//       <div className="flex items-center gap-4">
-//         {/* Select Checkbox */}
-//         {isSelectMode && (
-//           <button
-//             onClick={handleSelect}
-//             className={`w-5 h-5 rounded border-2 flex items-center justify-center flex-shrink-0 ${
-//               isSelected ? "bg-red-600 border-red-600" : "border-gray-300"
-//             }`}
-//           >
-//             {isSelected && <div className="w-2 h-2 bg-white rounded-sm"></div>}
-//           </button>
-//         )}
-
-//         {/* Image */}
-//         <Link href={`/products/${item.slug}`} className="block flex-shrink-0">
-//           <div className="relative w-20 h-20">
-//             <Image
-//               src={item.thumbnail}
-//               alt={item.name}
-//               fill
-//               className="object-cover rounded-lg"
-//             />
-//             {!item.isAvailable && (
-//               <div className="absolute inset-0 bg-black bg-opacity-50 rounded-lg"></div>
-//             )}
-//           </div>
-//         </Link>
-
-//         {/* Content */}
-//         <div className="flex-1 min-w-0">
-//           <Link href={`/products/${item.slug}`} className="block">
-//             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-//               <div className="flex-1 min-w-0">
-//                 <h3 className="font-semibold text-gray-900 truncate">
-//                   {item.name}
-//                 </h3>
-//                 <p className="text-sm text-gray-600 truncate">{item.excerpt}</p>
-//               </div>
-
-//               {/* Price & Actions */}
-//               <div className="flex items-center gap-4">
-//                 {/* Actions */}
-//                 <div className="flex items-center gap-2">
-//                   <button
-//                     onClick={handleAddToCart}
-//                     disabled={!item.isAvailable}
-//                     className={`inline-flex items-center px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
-//                       item.isAvailable
-//                         ? "bg-red-600 text-white hover:bg-red-700"
-//                         : "bg-gray-100 text-gray-400 cursor-not-allowed"
-//                     }`}
-//                   >
-//                     <ShoppingCart className="h-4 w-4 mr-2" />
-//                     {item.isAvailable ? "Add to Cart" : "Out of Stock"}
-//                   </button>
-//                   <button
-//                     onClick={handleRemove}
-//                     className="p-2 text-gray-600 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
-//                   >
-//                     <Trash2 className="h-4 w-4" />
-//                   </button>
-//                 </div>
-//               </div>
-//             </div>
-//           </Link>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }

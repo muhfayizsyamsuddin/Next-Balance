@@ -1,10 +1,10 @@
 "use client";
 
-import { ProductType, WishlistType } from "@/Types";
+import { ProductType } from "@/Types";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import {
-  Heart,
+  // Heart,
   ShoppingBag,
   Truck,
   RotateCcw,
@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import RelatedProducts from "@/components/RelatedProducts";
+import AddWishlist from "@/components/AddWishlist";
 
 interface ProductDetailPageProps {
   params: Promise<{ slug: string }>;
@@ -23,8 +24,8 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
   const [loading, setLoading] = useState(true);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [selectedSize, setSelectedSize] = useState<string>("");
-  const [isWishlisted, setIsWishlisted] = useState(false);
-  const [isAddingToWishlist, setIsAddingToWishlist] = useState(false);
+  // const [isWishlisted, setIsWishlisted] = useState(false);
+  // const [isAddingToWishlist, setIsAddingToWishlist] = useState(false);
   const [isAddingToCart, setIsAddingToCart] = useState(false);
   const [slug, setSlug] = useState<string>("");
 
@@ -68,104 +69,10 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
       }
       const data: ProductType = await response.json();
       setProduct(data);
-
-      // Check if product is already in wishlist
-      checkWishlistStatus(data._id);
     } catch (error) {
       console.error("Error fetching product:", error);
     } finally {
       setLoading(false);
-    }
-  };
-
-  const checkWishlistStatus = async (productId: number) => {
-    try {
-      // Check if user is logged in
-      const token = localStorage.getItem("access_token");
-      if (!token) return;
-
-      const response = await fetch("/api/wishlists", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      if (response.ok) {
-        const wishlists: WishlistType[] = await response.json();
-        const isInWishlist = wishlists.some(
-          (item: WishlistType) => item.productId === productId
-        );
-        setIsWishlisted(isInWishlist);
-      }
-    } catch (error) {
-      console.error("Error checking wishlist status:", error);
-    }
-  };
-
-  const handleAddToWishlist = async () => {
-    if (!product) return;
-
-    const token = localStorage.getItem("access_token");
-    if (!token) {
-      alert("Please login to add items to wishlist");
-      return;
-    }
-
-    setIsAddingToWishlist(true);
-
-    try {
-      const response = await fetch("/api/wishlists", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          productId: product._id,
-        }),
-      });
-
-      if (response.ok) {
-        setIsWishlisted(true);
-        alert("Added to wishlist!");
-      } else {
-        throw new Error("Failed to add to wishlist");
-      }
-    } catch (error) {
-      console.error("Error adding to wishlist:", error);
-      alert("Failed to add to wishlist. Please try again.");
-    } finally {
-      setIsAddingToWishlist(false);
-    }
-  };
-
-  const handleRemoveFromWishlist = async () => {
-    if (!product) return;
-
-    const token = localStorage.getItem("access_token");
-    if (!token) return;
-
-    setIsAddingToWishlist(true);
-
-    try {
-      const response = await fetch(`/api/wishlists?productId=${product._id}`, {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      if (response.ok) {
-        setIsWishlisted(false);
-        alert("Removed from wishlist!");
-      } else {
-        throw new Error("Failed to remove from wishlist");
-      }
-    } catch (error) {
-      console.error("Error removing from wishlist:", error);
-      alert("Failed to remove from wishlist. Please try again.");
-    } finally {
-      setIsAddingToWishlist(false);
     }
   };
 
@@ -296,25 +203,12 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
               <div>
                 <div className="flex items-center mb-2">
                   <div className="flex-1"></div>
-                  <button
-                    onClick={
-                      isWishlisted
-                        ? handleRemoveFromWishlist
-                        : handleAddToWishlist
-                    }
-                    disabled={isAddingToWishlist}
-                    className={`p-2 rounded-full transition-colors ${
-                      isWishlisted
-                        ? "bg-red-100 text-red-600 hover:bg-red-200"
-                        : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-                    } disabled:opacity-50 ml-auto`}
-                    style={{ marginLeft: "auto" }}
-                  >
-                    <Heart
-                      size={24}
-                      className={isWishlisted ? "fill-current" : ""}
-                    />
-                  </button>
+                  <AddWishlist
+                    productId={product._id.toString()}
+                    variant="icon"
+                    size="md"
+                    className="bg-white rounded-full shadow-md hover:bg-gray-50 p-2"
+                  />
                 </div>
                 <h1 className="text-3xl font-bold text-gray-900 mb-2">
                   {product.name}

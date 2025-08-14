@@ -3,15 +3,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { Heart, ShoppingCart, Eye, ArrowRight } from "lucide-react";
+import { ShoppingCart, Eye, ArrowRight } from "lucide-react";
 import { ProductType } from "@/Types";
+import AddWishlist from "./AddWishlist";
 
 interface ProductCardProps {
   product: ProductType;
   showQuickActions?: boolean;
   layout?: "grid" | "list";
   onAddToCart?: (productId: number) => void;
-  onAddToWishlist?: (productId: number) => void;
   onQuickView?: (productId: number) => void;
 }
 
@@ -20,10 +20,8 @@ export default function ProductCard({
   showQuickActions = true,
   layout = "grid",
   onAddToCart,
-  onAddToWishlist,
   onQuickView,
 }: ProductCardProps) {
-  const [isWishlisted, setIsWishlisted] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -31,13 +29,6 @@ export default function ProductCard({
     e.preventDefault();
     e.stopPropagation();
     onAddToCart?.(product._id);
-  };
-
-  const handleWishlist = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setIsWishlisted(!isWishlisted);
-    onAddToWishlist?.(product._id);
   };
 
   const handleQuickView = (e: React.MouseEvent) => {
@@ -66,18 +57,14 @@ export default function ProductCard({
 
               {/* Wishlist Button */}
               {showQuickActions && (
-                <button
-                  onClick={handleWishlist}
-                  className="absolute top-3 right-3 p-2 bg-white rounded-full shadow-md hover:bg-gray-50 transition-colors"
-                >
-                  <Heart
-                    className={`h-4 w-4 ${
-                      isWishlisted
-                        ? "fill-red-500 text-red-500"
-                        : "text-gray-600"
-                    }`}
+                <div className="absolute top-3 right-3">
+                  <AddWishlist
+                    productId={product._id.toString()}
+                    variant="icon"
+                    size="sm"
+                    className="bg-white rounded-full shadow-md hover:bg-gray-50 p-2"
                   />
-                </button>
+                </div>
               )}
             </div>
 
@@ -176,18 +163,12 @@ export default function ProductCard({
           {/* Quick Actions Overlay */}
           {showQuickActions && (
             <div className="absolute top-3 right-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <button
-                onClick={handleWishlist}
-                className="p-2 bg-white rounded-full shadow-md hover:bg-gray-50 transition-colors"
-                suppressHydrationWarning={true}
-                aria-label="Add to wishlist"
-              >
-                <Heart
-                  className={`h-4 w-4 ${
-                    isWishlisted ? "fill-red-500 text-red-500" : "text-gray-600"
-                  }`}
-                />
-              </button>
+              <AddWishlist
+                productId={product._id.toString()}
+                variant="icon"
+                size="sm"
+                className="bg-white rounded-full shadow-md hover:bg-gray-50 p-2"
+              />
               <button
                 onClick={handleQuickView}
                 className="p-2 bg-white rounded-full shadow-md hover:bg-gray-50 transition-colors"
