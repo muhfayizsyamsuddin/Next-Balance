@@ -8,22 +8,20 @@ import {
   //   ShoppingCart,
   Trash2,
   ArrowLeft,
-  Grid3X3,
+  Grid3x3,
   List,
 } from "lucide-react";
 import { WishlistType } from "@/Types";
 import toast from "react-hot-toast";
+import AddWishlist from "@/components/AddWishlist";
 
 type ViewMode = "grid" | "list";
-type SortOption = "newest" | "oldest" | "price-low" | "price-high" | "name";
-
 export default function Wishlist() {
   const [wishlistItems, setWishlistItems] = useState<WishlistType[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [viewMode, setViewMode] = useState<ViewMode>("grid");
-  const [sortBy, setSortBy] = useState<SortOption>("newest");
-  const [selectedItems, setSelectedItems] = useState<number[]>([]);
+  const [selectedItems, setSelectedItems] = useState<string[]>([]);
   const [isSelectMode, setIsSelectMode] = useState(false);
 
   useEffect(() => {
@@ -43,7 +41,7 @@ export default function Wishlist() {
       setError(null);
 
       // Check if user is authenticated
-      const res = await fetch("http://localhost:3000/api/wishlists", {
+      const res = await fetch("/api/wishlists", {
         method: "GET",
         credentials: "include", // memastikan cookie dikirim
       });
@@ -51,71 +49,6 @@ export default function Wishlist() {
       if (!res.ok) {
         throw new Error("Failed to fetch wishlist");
       }
-
-      //   const data = await response.json();
-
-      // Map the data to include product details
-      // Assuming the API returns wishlist items with populated product data
-      //   const mappedData: WishlistItem[] = data.map(
-      //     (item: {
-      //       _id: number;
-      //       userId: number;
-      //       productId: number;
-      //       dateAdded?: string;
-      //       product?: {
-      //         name?: string;
-      //         slug?: string;
-      //         description?: string;
-      //         excerpt?: string;
-      //         price?: number;
-      //         tags?: string[];
-      //         thumbnail?: string;
-      //         images?: string[];
-      //         rating?: number;
-      //         reviewCount?: number;
-      //         discountPrice?: number;
-      //         isNew?: boolean;
-      //         isBestseller?: boolean;
-      //         isAvailable?: boolean;
-      //       };
-      //       name?: string;
-      //       slug?: string;
-      //       description?: string;
-      //       excerpt?: string;
-      //       price?: number;
-      //       tags?: string[];
-      //       thumbnail?: string;
-      //       images?: string[];
-      //       rating?: number;
-      //       reviewCount?: number;
-      //       discountPrice?: number;
-      //       isNew?: boolean;
-      //       isBestseller?: boolean;
-      //       isAvailable?: boolean;
-      //     }) => ({
-      //       _id: item._id,
-      //       userId: item.userId,
-      //       productId: item.productId,
-      //       dateAdded: item.dateAdded || new Date().toISOString(),
-      //       name: item.product?.name || item.name || "Unknown Product",
-      //       slug: item.product?.slug || item.slug || "",
-      //       description: item.product?.description || item.description || "",
-      //       excerpt: item.product?.excerpt || item.excerpt || "",
-      //       price: item.product?.price || item.price || 0,
-      //       tags: item.product?.tags || item.tags || [],
-      //       thumbnail:
-      //         item.product?.thumbnail || item.thumbnail || "/placeholder.jpg",
-      //       images: item.product?.images || item.images || [],
-      //       rating: item.product?.rating || item.rating || 4.5,
-      //       reviewCount: item.product?.reviewCount || item.reviewCount || 0,
-      //       discountPrice: item.product?.discountPrice || item.discountPrice,
-      //       isNew: item.product?.isNew || item.isNew || false,
-      //       isBestseller:
-      //         item.product?.isBestseller || item.isBestseller || false,
-      //       isAvailable: item.product?.isAvailable ?? item.isAvailable ?? true,
-      //     })
-      //   );
-
       setWishlistItems(data);
       //   setLoading(false);
     } catch (error) {
@@ -158,14 +91,16 @@ export default function Wishlist() {
     if (selectedItems.length === wishlistItems.length) {
       setSelectedItems([]);
     } else {
-      setSelectedItems(wishlistItems.map((item) => item._id));
+      setSelectedItems(wishlistItems.map((item) => item.productId));
     }
   };
 
   const handleBulkRemove = async () => {
     try {
       const removePromises = selectedItems.map(async (itemId) => {
-        const itemToRemove = wishlistItems.find((item) => item._id === itemId);
+        const itemToRemove = wishlistItems.find(
+          (item) => item.productId === itemId
+        );
         if (!itemToRemove) return;
 
         return fetch(`/api/wishlists`, {
@@ -181,7 +116,7 @@ export default function Wishlist() {
       await Promise.all(removePromises);
 
       setWishlistItems((items) =>
-        items.filter((item) => !selectedItems.includes(item._id))
+        items.filter((item) => !selectedItems.includes(item.productId))
       );
       setSelectedItems([]);
       setIsSelectMode(false);
@@ -384,24 +319,6 @@ export default function Wishlist() {
         {/* Controls */}
         <div className="bg-white rounded-lg border border-gray-200 p-4 mb-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            {/* Sort */}
-            <div className="flex items-center gap-4">
-              <label className="text-sm font-medium text-gray-700">
-                Sort by:
-              </label>
-              <select
-                value={sortBy}
-                onChange={(e) => setSortBy(e.target.value as SortOption)}
-                className="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
-              >
-                <option value="newest">Newest Added</option>
-                <option value="oldest">Oldest Added</option>
-                <option value="price-low">Price: Low to High</option>
-                <option value="price-high">Price: High to Low</option>
-                <option value="name">Name: A to Z</option>
-              </select>
-            </div>
-
             {/* View Mode */}
             <div className="flex items-center border border-gray-300 rounded-lg">
               <button
@@ -412,7 +329,7 @@ export default function Wishlist() {
                     : "text-gray-600 hover:text-gray-900"
                 } transition-colors`}
               >
-                <Grid3X3 className="h-4 w-4" />
+                <Grid3x3 className="h-4 w-4" />
               </button>
               <button
                 onClick={() => setViewMode("list")}
@@ -441,14 +358,14 @@ export default function Wishlist() {
                   <div className="absolute top-2 right-2">
                     <input
                       type="checkbox"
-                      checked={selectedItems.includes(item._id)}
+                      checked={selectedItems.includes(item.productId)}
                       onChange={() => {
-                        if (selectedItems.includes(item._id)) {
+                        if (selectedItems.includes(item.productId)) {
                           setSelectedItems(
-                            selectedItems.filter((id) => id !== item._id)
+                            selectedItems.filter((id) => id !== item.productId)
                           );
                         } else {
-                          setSelectedItems([...selectedItems, item._id]);
+                          setSelectedItems([...selectedItems, item.productId]);
                         }
                       }}
                       className="w-4 h-4 text-red-600 focus:ring-red-500 border-gray-300 rounded"
@@ -457,7 +374,7 @@ export default function Wishlist() {
                 )}
 
                 {/* Remove button */}
-                {!isSelectMode && (
+                {/* {!isSelectMode && (
                   <button
                     onClick={() => handleRemoveItem(item.productId)}
                     className="absolute top-2 right-2 bg-white rounded-full p-2 shadow hover:bg-red-100 transition"
@@ -465,6 +382,21 @@ export default function Wishlist() {
                   >
                     <Trash2 className="h-4 w-4 text-red-600" />
                   </button>
+                )} */}
+                {!isSelectMode && (
+                  <div className="absolute top-2 right-2 z-10">
+                    <AddWishlist
+                      productId={item.productId}
+                      isInWishlist={true}
+                      variant={viewMode === "grid" ? "icon" : "button"}
+                      size="sm"
+                      onRemoved={() =>
+                        setWishlistItems((prev) =>
+                          prev.filter((w) => w.productId !== item.productId)
+                        )
+                      }
+                    />
+                  </div>
                 )}
 
                 {/* Gambar Produk */}
@@ -516,14 +448,14 @@ export default function Wishlist() {
                   <div className="p-4">
                     <input
                       type="checkbox"
-                      checked={selectedItems.includes(item._id)}
+                      checked={selectedItems.includes(item.productId)}
                       onChange={() => {
-                        if (selectedItems.includes(item._id)) {
+                        if (selectedItems.includes(item.productId)) {
                           setSelectedItems(
-                            selectedItems.filter((id) => id !== item._id)
+                            selectedItems.filter((id) => id !== item.productId)
                           );
                         } else {
-                          setSelectedItems([...selectedItems, item._id]);
+                          setSelectedItems([...selectedItems, item.productId]);
                         }
                       }}
                       className="w-4 h-4 text-red-600 focus:ring-red-500 border-gray-300 rounded"
@@ -567,6 +499,17 @@ export default function Wishlist() {
                     Lihat
                   </Link>
                 </div>
+                <AddWishlist
+                  productId={item.productId}
+                  isInWishlist={true}
+                  variant="button"
+                  size="sm"
+                  onRemoved={() =>
+                    setWishlistItems((prev) =>
+                      prev.filter((w) => w.productId !== item.productId)
+                    )
+                  }
+                />
               </div>
             ))}
           </div>

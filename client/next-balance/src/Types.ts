@@ -12,8 +12,8 @@ export type ProductType = {
 
 export type WishlistType = {
   _id: number;
-  userId: number;
-  productId: number;
+  userId: string;
+  productId: string;
   product: ProductType;
 };
 
