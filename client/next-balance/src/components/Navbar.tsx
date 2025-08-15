@@ -11,6 +11,7 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [isClient, setIsClient] = useState<boolean>(false);
 
   const handleLogout = async () => {
     await LogOut(); // panggil server action untuk hapus cookie
@@ -19,6 +20,7 @@ export default function Navbar() {
   };
 
   useEffect(() => {
+    setIsClient(true);
     // Cek cookie Authorization di client
     const isAuth = document.cookie.includes("Authorization=");
     setIsLoggedIn(isAuth);
@@ -86,15 +88,15 @@ export default function Navbar() {
                 />
               </div>
             </div> */}
-            {/* <div className="hidden lg:flex items-center space-x-4">
+            <div className="hidden lg:flex items-center space-x-4">
               {isClient ? (
                 <p className="text-gray-700">
-                  Welcome to NextBalance {isLoggedIn ? "User" : "Guest"}
+                  Welcome to NextBalance {isLoggedIn ? "Someone" : "Guest"}
                 </p>
               ) : (
                 <p className="text-gray-700">Welcome to NextBalance</p> // placeholder SSR
               )}
-            </div> */}
+            </div>
 
             {/* Right side icons */}
             <div className="flex items-center space-x-4">
