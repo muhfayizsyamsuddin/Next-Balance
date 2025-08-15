@@ -19,9 +19,9 @@ export default function ProductCard({
   product,
   showQuickActions = true,
   layout = "grid",
-  // onAddToCart,
-  onQuickView,
-}: ProductCardProps) {
+}: // onAddToCart,
+// onQuickView,
+ProductCardProps) {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isInWishlist, setIsInWishlist] = useState(false);
@@ -70,11 +70,11 @@ export default function ProductCard({
   //   onAddToCart?.(product._id);
   // };
 
-  const handleQuickView = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    onQuickView?.(product._id);
-  };
+  // const handleQuickView = (e: React.MouseEvent) => {
+  //   e.preventDefault();
+  //   e.stopPropagation();
+  //   onQuickView?.(product._id);
+  // };
 
   if (layout === "list") {
     return (
@@ -135,23 +135,16 @@ export default function ProductCard({
 
                 {/* Price and Actions */}
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2"></div>
+                  <div className="text-xl font-bold text-gray-900">
+                    {product.price.toLocaleString("id-ID", {
+                      style: "currency",
+                      currency: "IDR",
+                    })}
+                  </div>
 
                   {showQuickActions && (
                     <div className="flex gap-2">
-                      <button
-                        onClick={handleQuickView}
-                        className="p-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
-                      >
-                        <Eye className="h-4 w-4 text-gray-600" />
-                      </button>
-                      {/* <button
-                        onClick={handleAddToCart}
-                        className="px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors flex items-center gap-2"
-                      >
-                        <ShoppingCart className="h-4 w-4" />
-                        Add to Cart
-                      </button> */}
+                      <ArrowRight className="h-5 w-5 text-gray-400 group-hover:text-red-600 transition-colors" />
                     </div>
                   )}
                 </div>
@@ -212,14 +205,14 @@ export default function ProductCard({
                 size="sm"
                 className="bg-white rounded-full shadow-md hover:bg-gray-50 p-2"
               />
-              <button
+              {/* <button
                 onClick={handleQuickView}
                 className="p-2 bg-white rounded-full shadow-md hover:bg-gray-50 transition-colors"
                 suppressHydrationWarning={true}
                 aria-label="Quick view"
               >
                 <Eye className="h-4 w-4 text-gray-600" />
-              </button>
+              </button> */}
             </div>
           )}
 
@@ -262,7 +255,12 @@ export default function ProductCard({
 
           {/* Price */}
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2"></div>
+            <div className="text-xl font-bold text-gray-900">
+              {product.price.toLocaleString("id-ID", {
+                style: "currency",
+                currency: "IDR",
+              })}
+            </div>
 
             <ArrowRight className="h-4 w-4 text-gray-400 group-hover:text-red-600 group-hover:translate-x-1 transition-all duration-200" />
           </div>

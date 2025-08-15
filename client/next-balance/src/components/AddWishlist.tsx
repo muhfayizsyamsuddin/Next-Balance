@@ -147,7 +147,7 @@ export default function AddWishlist({
           isInWishlist
             ? "bg-red-500 text-white hover:bg-red-600"
             : "bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-300"
-        } ${className}`}
+        } ${className} mr-6 py-2.5`}
       >
         {isLoading ? (
           <Loader2 className={`${sizeClasses[size].icon} animate-spin mr-2`} />

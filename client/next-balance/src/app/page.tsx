@@ -7,6 +7,7 @@ import { ProductType } from "@/Types";
 import Footer from "@/components/Footer";
 import { homepageBanners } from "@/data/banners";
 import InfoNextBalance from "@/components/InfoNextBalance";
+import Image from "next/image";
 
 export default async function Home() {
   const data = await fetch("http://localhost:3000/api/products?limit=5");
@@ -49,7 +50,7 @@ export default async function Home() {
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <Link
-                  href="/products"
+                  href={`/products/${products[0]?.slug}`}
                   className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-gray-900 transition-all duration-200"
                 >
                   View Collection
@@ -64,8 +65,19 @@ export default async function Home() {
                       New Collection
                     </h3>
                     <p className="text-gray-600 mb-4">Athletic Performance</p>
-                    <div className="bg-gray-100 h-32 rounded-lg flex items-center justify-center">
-                      <span className="text-gray-500">Product Image</span>
+                    <div className="aspect-[7/3] w-full rounded-lg overflow-hidden shadow-inner relative">
+                      <Image
+                        src={products[0]?.thumbnail || "/placeholder-shoe.jpg"}
+                        alt={products[0]?.name || "Featured Product"}
+                        fill
+                        style={{
+                          objectFit: "contain",
+                          objectPosition: "center",
+                        }}
+                        sizes="350px"
+                        className="transition-transform duration-300 hover:scale-110 p-4"
+                        priority
+                      />
                     </div>
                   </div>
                 </div>
