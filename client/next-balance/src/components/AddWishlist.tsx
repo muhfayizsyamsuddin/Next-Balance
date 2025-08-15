@@ -65,10 +65,10 @@ export default function AddWishlist({
         );
       }
 
-      console.log("Wishlist API response successful:", response.status);
+      // console.log("Wishlist API response successful:", response.status);
 
       const newWishlistState = !isInWishlist;
-      console.log("Sending new wishlist state to parent:", newWishlistState);
+      // console.log("Sending new wishlist state to parent:", newWishlistState);
 
       onWishlistChange?.(newWishlistState);
 

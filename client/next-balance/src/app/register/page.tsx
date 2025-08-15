@@ -31,9 +31,9 @@ export default function Register() {
       if (!response.ok) {
         throw await response.json();
       }
-      const result = await response.json();
+      await response.json();
       toast.success("Registration successful");
-      console.log("Registration successful:", result);
+      // console.log("Registration successful:", result);
       router.push("/login");
     } catch (err) {
       toast.error((err as Error).message);

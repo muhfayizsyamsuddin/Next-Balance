@@ -11,7 +11,7 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
-  const [isClient, setIsClient] = useState<boolean>(false);
+  // const [isClient, setIsClient] = useState<boolean>(false);
 
   const handleLogout = async () => {
     await LogOut(); // panggil server action untuk hapus cookie
@@ -20,9 +20,11 @@ export default function Navbar() {
   };
 
   useEffect(() => {
-    setIsClient(true);
+    // setIsClient(true);
     // Cek cookie Authorization di client
-    const isAuth = document.cookie.includes("Authorization=");
+    const isAuth = document.cookie.includes("Authorization");
+    // console.log("Is user logged in:", isAuth);
+    // router.refresh(); // Refresh router untuk update state
     setIsLoggedIn(isAuth);
   }, []);
 
@@ -89,12 +91,10 @@ export default function Navbar() {
               </div>
             </div> */}
             <div className="hidden lg:flex items-center space-x-4">
-              {isClient ? (
+              {isLoggedIn !== null && (
                 <p className="text-gray-700">
                   Welcome to NextBalance {isLoggedIn ? "Someone" : "Guest"}
                 </p>
-              ) : (
-                <p className="text-gray-700">Welcome to NextBalance</p> // placeholder SSR
               )}
             </div>
 

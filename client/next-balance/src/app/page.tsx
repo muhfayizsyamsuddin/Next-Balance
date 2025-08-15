@@ -13,7 +13,7 @@ export default async function Home() {
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/products?limit=5`
   );
   const products: ProductType[] = await data.json();
-  console.log(products);
+  // console.log(products);
 
   // Get homepage banners
   const banners = homepageBanners();

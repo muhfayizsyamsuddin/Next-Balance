@@ -33,7 +33,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/products/${slug}`
   );
   const product: ProductType = await data.json();
-  console.log(product);
+  // console.log(product);
   if (!product) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">

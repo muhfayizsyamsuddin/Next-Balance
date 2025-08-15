@@ -19,26 +19,26 @@ export default function ProductDetailClient({
 
   const fetchWishlist = useCallback(async () => {
     try {
-      console.log("Fetching wishlist from server...");
+      // console.log("Fetching wishlist from server...");
       const res = await fetch("/api/wishlists", {
         credentials: "include",
         cache: "no-store",
       });
       if (res.ok) {
         const wishlist = await res.json();
-        console.log("Wishlist response:", wishlist);
-        console.log("Current product ID:", product._id.toString());
+        // console.log("Wishlist response:", wishlist);
+        // console.log("Current product ID:", product._id.toString());
 
         const found = wishlist.some((item: { productId: string }) => {
-          console.log(
-            "Comparing:",
-            item.productId,
-            "with",
-            product._id.toString()
-          );
+          // console.log(
+          //   "Comparing:",
+          //   item.productId,
+          //   "with",
+          //   product._id.toString()
+          // );
           return item.productId.toString() === product._id.toString();
         });
-        console.log(" Found in wishlist:", found);
+        // console.log(" Found in wishlist:", found);
         setIsInWishlist(found);
       } else {
         console.log("Failed to fetch wishlist:", res.status);

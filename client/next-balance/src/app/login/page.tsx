@@ -28,10 +28,11 @@ export default function Login() {
       if (!response.ok) {
         throw await response.json();
       }
-      const result = await response.json();
+      await response.json();
       toast.success("Login successful");
-      console.log("Login successful:", result);
-      router.push("/");
+      router.refresh();
+      // router.push("/");
+      window.location.href = "/";
     } catch (err) {
       toast.error((err as Error).message);
     }

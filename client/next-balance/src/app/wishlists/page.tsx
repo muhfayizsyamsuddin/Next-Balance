@@ -40,6 +40,11 @@ export default function Wishlist() {
       setLoading(true);
       setError(null);
 
+      if (!document.cookie.includes("Authorization")) {
+        setError("You must be logged in to view your wishlist.");
+        setLoading(false);
+        return;
+      }
       // Check if user is authenticated
       const res = await fetch("/api/wishlists", {
         method: "GET",
@@ -127,10 +132,10 @@ export default function Wishlist() {
       setSelectedItems([]);
       setIsSelectMode(false);
 
-      alert(`${selectedItems.length} item(s) removed from wishlist`);
+      toast.success("Selected items removed from wishlist");
     } catch (error) {
       console.error("Error removing items from wishlist:", error);
-      alert("Failed to remove items. Please try again.");
+      toast.error("Failed to remove items. Please try again.");
     }
   };
 
