@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Search, ShoppingBag, User, Menu, X, Heart } from "lucide-react";
+import { Search, User, Menu, X, Heart } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { LogOut } from "@/actions";
 
@@ -11,7 +11,8 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
-  // console.log("Navbar rendered");
+  const [isClient, setIsClient] = useState<boolean>(false);
+
   const handleLogout = async () => {
     await LogOut(); // panggil server action untuk hapus cookie
     setIsLoggedIn(false);
@@ -19,6 +20,7 @@ export default function Navbar() {
   };
 
   useEffect(() => {
+    setIsClient(true);
     // Cek cookie Authorization di client
     const isAuth = document.cookie.includes("Authorization=");
     setIsLoggedIn(isAuth);
@@ -65,24 +67,6 @@ export default function Navbar() {
                 </Link>
               </div>
 
-              <div className="relative group">
-                <button className="text-gray-700 hover:text-gray-900 font-medium py-2 transition-colors duration-200 flex items-center">
-                  Men
-                  <svg
-                    className="ml-1 h-4 w-4"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </button>
-                {/* Dropdown would go here */}
-              </div>
-
               <Link
                 href="/products"
                 className="text-gray-700 hover:text-gray-900 font-medium py-2 transition-colors duration-200"
@@ -92,7 +76,7 @@ export default function Navbar() {
             </div>
 
             {/* Search Bar - Desktop */}
-            <div className="hidden lg:flex items-center flex-1 max-w-lg mx-8">
+            {/* <div className="hidden lg:flex items-center flex-1 max-w-lg mx-8">
               <div className="relative w-full">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <Search className="h-5 w-5 text-gray-400" />
@@ -103,6 +87,15 @@ export default function Navbar() {
                   className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-gray-900 focus:border-gray-900"
                 />
               </div>
+            </div> */}
+            <div className="hidden lg:flex items-center space-x-4">
+              {isClient ? (
+                <p className="text-gray-700">
+                  Welcome to NextBalance {isLoggedIn ? "User" : "Guest"}
+                </p>
+              ) : (
+                <p className="text-gray-700">Welcome to NextBalance</p> // placeholder SSR
+              )}
             </div>
 
             {/* Right side icons */}
@@ -162,15 +155,6 @@ export default function Navbar() {
               >
                 <Heart size={20} />
               </Link>
-
-              {/* Shopping Bag */}
-              <button className="p-2 text-gray-700 hover:text-gray-900 relative">
-                <ShoppingBag size={20} />
-                {/* Cart count badge */}
-                <span className="absolute -top-1 -right-1 bg-red-600 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
-                  0
-                </span>
-              </button>
             </div>
           </div>
         </div>

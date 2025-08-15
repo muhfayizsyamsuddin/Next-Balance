@@ -9,7 +9,7 @@ import { homepageBanners } from "@/data/banners";
 import InfoNextBalance from "@/components/InfoNextBalance";
 
 export default async function Home() {
-  const data = await fetch("http://localhost:3000/api/products");
+  const data = await fetch("http://localhost:3000/api/products?limit=5");
   const products: ProductType[] = await data.json();
   console.log(products);
 
@@ -76,85 +76,13 @@ export default async function Home() {
       </section>
 
       {/* Features Section */}
-      {/* <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Why Choose Next Balance?
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Experience the perfect blend of innovation, comfort, and style
-              with our premium athletic footwear collection.
-            </p>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center group">
-              <div className="bg-red-50 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:bg-red-100 transition-colors">
-                <span className="text-2xl">🏃</span>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                Performance First
-              </h3>
-              <p className="text-gray-600">
-                Engineered for athletes who demand excellence in every step.
-              </p>
-            </div>
-
-            <div className="text-center group">
-              <div className="bg-red-50 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:bg-red-100 transition-colors">
-                <span className="text-2xl">✨</span>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                Premium Quality
-              </h3>
-              <p className="text-gray-600">
-                Crafted with the finest materials for unmatched durability.
-              </p>
-            </div>
-
-            <div className="text-center group">
-              <div className="bg-red-50 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:bg-red-100 transition-colors">
-                <span className="text-2xl">🎯</span>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                Perfect Fit
-              </h3>
-              <p className="text-gray-600">
-                Advanced sizing technology ensures comfort all day long.
-              </p>
-            </div>
-
-            <div className="text-center group">
-              <div className="bg-red-50 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:bg-red-100 transition-colors">
-                <span className="text-2xl">🌟</span>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                Style Icon
-              </h3>
-              <p className="text-gray-600">
-                Where athletic performance meets contemporary fashion.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section> */}
       <InfoNextBalance />
 
       {/* Featured Products Section */}
-      {/* <section className="py-20 bg-gray-50"> */}
-      {/* <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Featured Products
-            </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Discover our most popular athletic footwear, loved by athletes and
-              fitness enthusiasts worldwide.
-            </p>
-          </div> */}
+
       <FeaturedProducts products={products} />
-      {/* </div> */}
+
       {/* </section> */}
 
       {/* Newsletter Section */}

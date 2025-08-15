@@ -50,15 +50,6 @@ const defaultBanners: BannerData[] = [
     bgColor: "bg-green-600",
     textColor: "text-white",
   },
-  {
-    id: 4,
-    message:
-      "📞 24/7 Customer Support Available | Expert Help When You Need It",
-    ctaText: "Contact Us",
-    ctaLink: "/contact",
-    bgColor: "bg-blue-600",
-    textColor: "text-white",
-  },
 ];
 
 export default function Banner({

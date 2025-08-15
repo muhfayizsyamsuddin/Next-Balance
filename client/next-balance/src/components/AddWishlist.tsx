@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Heart, Loader2 } from "lucide-react";
 import toast from "react-hot-toast";
 
@@ -25,6 +25,12 @@ export default function AddWishlist({
 }: AddWishlistProps) {
   const [inWishlist, setInWishlist] = useState(isInWishlist);
   const [isLoading, setIsLoading] = useState(false);
+  const [mounted, setMounted] = useState<boolean>(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+  if (!mounted) return null;
 
   const handleToggleWishlist = async (e: React.MouseEvent) => {
     e.preventDefault();

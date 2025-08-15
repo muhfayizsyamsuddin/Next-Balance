@@ -44,17 +44,6 @@ export const promotionalBanners: BannerData[] = [
     isActive: true,
     priority: 3,
   },
-  {
-    id: 4,
-    message:
-      "📞 24/7 Customer Support Available | Expert Help When You Need It",
-    ctaText: "Contact Us",
-    ctaLink: "/contact",
-    bgColor: "bg-blue-600",
-    textColor: "text-white",
-    isActive: true,
-    priority: 4,
-  },
 ];
 
 // Seasonal banners

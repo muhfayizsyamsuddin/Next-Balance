@@ -1,15 +1,22 @@
-"use client";
+"use server";
 // import { Shield, Stars, Truck, Users } from "lucide-react";
 import Link from "next/link";
 import ProductCard from "./ProductCard";
 import { ProductType } from "@/Types";
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 
-interface ProductProps {
+// interface ProductProps {
+//   products: ProductType[];
+// }
+
+export default async function FeaturedProducts({
+  products,
+}: {
   products: ProductType[];
-}
-
-export default function FeaturedProducts({ products }: ProductProps) {
+}) {
+  // const data = await fetch("http://localhost:3000/api/products");
+  // const productsFeatured: ProductType[] = await data.json();
   return (
     <section className="py-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4">
@@ -28,6 +35,33 @@ export default function FeaturedProducts({ products }: ProductProps) {
           {products.slice(0, 5).map((product) => (
             <ProductCard key={product._id} product={product} />
           ))}
+          {/* {products.map((product) => (
+            <Link
+              key={product._id}
+              href={`/products/${product.slug}`}
+              className="group relative bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
+            >
+              <div className="aspect-square">
+                <Image
+                  src={product.images[0] || product.thumbnail}
+                  alt={product.name}
+                  width={300}
+                  height={300}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="p-4">
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  {product.name}
+                </h3>
+                <p className="text-gray-600 mb-4">{product.excerpt}</p>
+                <span className="text-red-600 font-bold">
+                  ${product.price.toFixed(2)}
+                </span>
+              </div>
+            </Link>
+          ))} */}
+          {/* )} */}
         </div>
         <div className="text-center mt-12">
           <Link

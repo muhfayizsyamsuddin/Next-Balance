@@ -5,8 +5,8 @@ class ProductModel {
     return database.collection("products");
   }
 
-  static async getAllProducts(page: string) {
-    const limit = 4;
+  static async getAllProducts(page: string, limit: number = 4) {
+    // const limit = 4;
     const skip = (Number(page) - 1) * limit;
     return await this.collection().find().skip(skip).limit(limit).toArray();
   }
