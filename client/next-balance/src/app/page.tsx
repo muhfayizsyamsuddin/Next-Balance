@@ -95,22 +95,6 @@ export default async function Home() {
             Subscribe to our newsletter and be the first to know about new
             collections, exclusive offers, and athletic insights.
           </p>
-          <div className="max-w-lg mx-auto flex flex-col sm:flex-row gap-4">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="flex-1 px-6 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-red-500"
-              suppressHydrationWarning={true}
-              aria-label="Email address for newsletter subscription"
-            />
-            <button
-              className="px-8 py-3 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition-colors"
-              suppressHydrationWarning={true}
-              aria-label="Subscribe to newsletter"
-            >
-              Subscribe
-            </button>
-          </div>
         </div>
       </section>
 
