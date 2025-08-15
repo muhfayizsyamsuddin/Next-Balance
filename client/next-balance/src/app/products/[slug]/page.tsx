@@ -1,19 +1,25 @@
-"use server";
-
 import { ProductType } from "@/Types";
 import type { Metadata } from "next";
 import ProductDetailClient from "@/components/ProductDetailClient";
 import Link from "next/link";
 
-type Props = {
-  params: { slug: string };
-  searchParams: { [key: string]: string | string[] | undefined };
-};
+// type Props = {
+//   params: { slug: string };
+//   searchParams: { [key: string]: string | string[] | undefined };
+// };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const slug = params.slug;
+interface PageProps {
+  params: Promise<{
+    slug: string;
+  }>;
+}
+
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
+  const { slug } = await params;
   const post: ProductType = await fetch(
-    `http://localhost:3000/api/products/${slug}`
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/products/${slug}`
   ).then((res) => res.json());
   return {
     title: post.name,
@@ -21,13 +27,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function ProductDetailPage({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const { slug } = params;
-  const data = await fetch(`http://localhost:3000/api/products/${slug}`);
+export default async function ProductDetailPage({ params }: PageProps) {
+  const { slug } = await params;
+  const data = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/products/${slug}`
+  );
   const product: ProductType = await data.json();
   console.log(product);
   if (!product) {

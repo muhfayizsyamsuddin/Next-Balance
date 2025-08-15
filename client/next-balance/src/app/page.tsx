@@ -1,4 +1,3 @@
-"use server";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import Banner from "@/components/Banner";
@@ -8,9 +7,11 @@ import Footer from "@/components/Footer";
 import { homepageBanners } from "@/data/banners";
 import InfoNextBalance from "@/components/InfoNextBalance";
 import Image from "next/image";
-
+export const dynamic = "force-dynamic";
 export default async function Home() {
-  const data = await fetch("http://localhost:3000/api/products?limit=5");
+  const data = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/products?limit=5`
+  );
   const products: ProductType[] = await data.json();
   console.log(products);
 

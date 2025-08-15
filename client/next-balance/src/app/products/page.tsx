@@ -20,9 +20,7 @@ export default function Products() {
   const fetchProducts = async () => {
     setLoading(true);
     try {
-      const res = await fetch(
-        `http://localhost:3000/api/products?page=${page}&search=${search}`
-      );
+      const res = await fetch(`/api/products?page=${page}&search=${search}`);
       const data: ProductType[] = await res.json();
       if (data.length === 0) {
         setHasMore(false);
