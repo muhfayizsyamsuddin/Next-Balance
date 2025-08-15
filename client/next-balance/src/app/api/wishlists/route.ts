@@ -17,7 +17,9 @@ export async function POST(request: Request) {
       userId,
       productId,
     };
-    await WishlistModel.createWishlist(newWishlist);
+    console.log("Creating wishlist item:", newWishlist);
+    const result = await WishlistModel.createWishlist(newWishlist);
+    console.log("Wishlist created successfully:", result);
     return Response.json(
       {
         message: "Wishlist created successfully",
@@ -37,6 +39,15 @@ export async function GET(request: Request) {
       throw { message: "Unauthorized", status: 401 };
     }
     const wishlists = await WishlistModel.getAllWishlists(userId);
+    console.log(
+      "Fetched wishlists for user:",
+      userId,
+      "count:",
+      wishlists?.length
+    );
+    if (!wishlists) {
+      throw { message: "No wishlists found", status: 404 };
+    }
     return Response.json(wishlists, { status: 200 });
   } catch (err) {
     return errHandler(err);
@@ -54,7 +65,12 @@ export async function DELETE(request: Request) {
     if (!userId) {
       throw { message: "Unauthorized", status: 401 };
     }
-    await WishlistModel.removeWishlistItem(userId, productId);
+    console.log("🗑️ Removing wishlist item:", { userId, productId });
+    const result = await WishlistModel.removeWishlistItem(userId, productId);
+    console.log("✅ Remove result:", result);
+    if (result.deletedCount === 0) {
+      throw { message: "Wishlist item not found", status: 404 };
+    }
     return Response.json(
       { message: "Item removed from wishlist" },
       { status: 200 }

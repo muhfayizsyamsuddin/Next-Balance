@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
-import { ShoppingCart, Eye, ArrowRight } from "lucide-react";
+import { useState, useCallback, useEffect } from "react";
+import { Eye, ArrowRight } from "lucide-react";
 import { ProductType } from "@/Types";
 import AddWishlist from "./AddWishlist";
 
@@ -11,7 +11,7 @@ interface ProductCardProps {
   product: ProductType;
   showQuickActions?: boolean;
   layout?: "grid" | "list";
-  onAddToCart?: (productId: number) => void;
+  // onAddToCart?: (productId: number) => void;
   onQuickView?: (productId: number) => void;
 }
 
@@ -19,17 +19,56 @@ export default function ProductCard({
   product,
   showQuickActions = true,
   layout = "grid",
-  onAddToCart,
+  // onAddToCart,
   onQuickView,
 }: ProductCardProps) {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isInWishlist, setIsInWishlist] = useState(false);
 
-  const handleAddToCart = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    onAddToCart?.(product._id);
-  };
+  // Fetch wishlist status for this product
+  const fetchWishlistStatus = useCallback(async () => {
+    try {
+      const res = await fetch("/api/wishlists", {
+        credentials: "include",
+        cache: "no-store",
+      });
+      if (res.ok) {
+        const wishlist = await res.json();
+        const found = wishlist.some(
+          (item: { productId: string }) =>
+            item.productId.toString() === product._id.toString()
+        );
+        setIsInWishlist(found);
+      }
+    } catch (error) {
+      console.error("Error fetching wishlist status:", error);
+    }
+  }, [product._id]);
+
+  useEffect(() => {
+    fetchWishlistStatus();
+  }, [fetchWishlistStatus]);
+
+  // Handle wishlist state change
+  const handleWishlistChange = useCallback(
+    async (newState: boolean) => {
+      setIsInWishlist(newState);
+
+      // Wait a bit for the database to update
+      await new Promise((resolve) => setTimeout(resolve, 500));
+
+      // Re-fetch to confirm
+      await fetchWishlistStatus();
+    },
+    [fetchWishlistStatus]
+  );
+
+  // const handleAddToCart = (e: React.MouseEvent) => {
+  //   e.preventDefault();
+  //   e.stopPropagation();
+  //   onAddToCart?.(product._id);
+  // };
 
   const handleQuickView = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -60,6 +99,8 @@ export default function ProductCard({
                 <div className="absolute top-3 right-3">
                   <AddWishlist
                     productId={product._id.toString()}
+                    isInWishlist={isInWishlist}
+                    onWishlistChange={handleWishlistChange}
                     variant="icon"
                     size="sm"
                     className="bg-white rounded-full shadow-md hover:bg-gray-50 p-2"
@@ -104,13 +145,13 @@ export default function ProductCard({
                       >
                         <Eye className="h-4 w-4 text-gray-600" />
                       </button>
-                      <button
+                      {/* <button
                         onClick={handleAddToCart}
                         className="px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors flex items-center gap-2"
                       >
                         <ShoppingCart className="h-4 w-4" />
                         Add to Cart
-                      </button>
+                      </button> */}
                     </div>
                   )}
                 </div>
@@ -165,6 +206,8 @@ export default function ProductCard({
             <div className="absolute top-3 right-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <AddWishlist
                 productId={product._id.toString()}
+                isInWishlist={isInWishlist}
+                onWishlistChange={handleWishlistChange}
                 variant="icon"
                 size="sm"
                 className="bg-white rounded-full shadow-md hover:bg-gray-50 p-2"
@@ -181,7 +224,7 @@ export default function ProductCard({
           )}
 
           {/* Quick Add to Cart - Appears on Hover */}
-          {showQuickActions && (
+          {/* {showQuickActions && (
             <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
               <button
                 onClick={handleAddToCart}
@@ -192,7 +235,7 @@ export default function ProductCard({
                 Add to Cart
               </button>
             </div>
-          )}
+          )} */}
         </div>
 
         {/* Content Section */}

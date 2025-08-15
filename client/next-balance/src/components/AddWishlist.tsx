@@ -23,7 +23,6 @@ export default function AddWishlist({
   className = "",
   onRemoved,
 }: AddWishlistProps) {
-  const [inWishlist, setInWishlist] = useState(isInWishlist);
   const [isLoading, setIsLoading] = useState(false);
   const [mounted, setMounted] = useState<boolean>(false);
 
@@ -38,7 +37,7 @@ export default function AddWishlist({
     try {
       setIsLoading(true);
 
-      const method = inWishlist ? "DELETE" : "POST";
+      const method = isInWishlist ? "DELETE" : "POST";
       const endpoint = "/api/wishlists";
 
       const response = await fetch(endpoint, {
@@ -49,6 +48,10 @@ export default function AddWishlist({
         },
         body: JSON.stringify({ productId }),
       });
+      if (response.status === 409) {
+        toast.error("Product already in wishlist");
+        return;
+      }
 
       if (response.status === 401) {
         toast.error("You must be logged in to use wishlist.");
@@ -58,12 +61,15 @@ export default function AddWishlist({
 
       if (!response.ok) {
         throw new Error(
-          `Failed to ${inWishlist ? "remove from" : "add to"} wishlist`
+          `Failed to ${isInWishlist ? "remove from" : "add to"} wishlist`
         );
       }
 
-      const newWishlistState = !inWishlist;
-      setInWishlist(newWishlistState);
+      console.log("Wishlist API response successful:", response.status);
+
+      const newWishlistState = !isInWishlist;
+      console.log("Sending new wishlist state to parent:", newWishlistState);
+
       onWishlistChange?.(newWishlistState);
 
       if (!newWishlistState) {
@@ -111,7 +117,7 @@ export default function AddWishlist({
         onClick={(e) => handleToggleWishlist(e)}
         disabled={isLoading}
         className={`${baseClasses} rounded-full hover:scale-110 ${className}`}
-        title={inWishlist ? "Remove from wishlist" : "Add to wishlist"}
+        title={isInWishlist ? "Remove from wishlist" : "Add to wishlist"}
       >
         {isLoading ? (
           <Loader2
@@ -120,7 +126,7 @@ export default function AddWishlist({
         ) : (
           <Heart
             className={`${sizeClasses[size].icon} ${
-              inWishlist
+              isInWishlist
                 ? "text-red-500 fill-red-500"
                 : "text-gray-400 hover:text-red-500"
             }`}
@@ -138,7 +144,7 @@ export default function AddWishlist({
         className={`${baseClasses} ${
           sizeClasses[size].button
         } rounded-lg font-medium ${
-          inWishlist
+          isInWishlist
             ? "bg-red-500 text-white hover:bg-red-600"
             : "bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-300"
         } ${className}`}
@@ -148,11 +154,11 @@ export default function AddWishlist({
         ) : (
           <Heart
             className={`${sizeClasses[size].icon} mr-2 ${
-              inWishlist ? "fill-white" : ""
+              isInWishlist ? "fill-white" : ""
             }`}
           />
         )}
-        {inWishlist ? "Remove from Wishlist" : "Add to Wishlist"}
+        {isInWishlist ? "Remove from Wishlist" : "Add to Wishlist"}
       </button>
     );
   }
@@ -166,7 +172,7 @@ export default function AddWishlist({
           onClick={(e) => handleToggleWishlist(e)}
           disabled={isLoading}
           className={`${baseClasses} w-full rounded-lg ${
-            inWishlist
+            isInWishlist
               ? "bg-red-50 text-red-600 hover:bg-red-100"
               : "bg-gray-50 text-gray-600 hover:bg-gray-100"
           }`}
@@ -179,18 +185,18 @@ export default function AddWishlist({
             ) : (
               <Heart
                 className={`${sizeClasses[size].icon} mx-auto mb-2 ${
-                  inWishlist ? "fill-red-500 text-red-500" : ""
+                  isInWishlist ? "fill-red-500 text-red-500" : ""
                 }`}
               />
             )}
             <p className="font-medium">
               {isLoading
                 ? "Loading..."
-                : inWishlist
+                : isInWishlist
                 ? "In Wishlist"
                 : "Add to Wishlist"}
             </p>
-            {inWishlist && (
+            {isInWishlist && (
               <p className="text-xs text-gray-500 mt-1">Click to remove</p>
             )}
           </div>

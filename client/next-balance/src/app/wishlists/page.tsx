@@ -417,7 +417,7 @@ export default function Wishlist() {
                     href={`/products/${item.product.slug}`}
                     className="inline-block mt-2 px-4 py-2 bg-red-600 text-white text-sm rounded-lg hover:bg-red-700 transition"
                   >
-                    Lihat Produk
+                    View product
                   </Link>
                 </div>
               </div>
@@ -483,7 +483,7 @@ export default function Wishlist() {
                     href={`/products/${item.product.slug}`}
                     className="inline-block px-4 py-2 bg-red-600 text-white text-sm rounded-lg hover:bg-red-700 transition"
                   >
-                    Lihat
+                    View product
                   </Link>
                 </div>
                 <AddWishlist

@@ -119,7 +119,10 @@ export default function RelatedProducts({
 
                 <div className="flex items-center justify-between">
                   <p className="font-bold text-gray-900">
-                    ${product.price.toFixed(2)}
+                    {product.price.toLocaleString("id-ID", {
+                      style: "currency",
+                      currency: "IDR",
+                    })}
                   </p>
 
                   {/* Color variants indicator */}

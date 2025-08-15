@@ -9,6 +9,13 @@ class WishlistModel {
     userId: string;
     productId: string;
   }) {
+    const existsingWishlist = await this.collection().findOne({
+      userId: new ObjectId(newWishlist.userId),
+      productId: new ObjectId(newWishlist.productId),
+    });
+    if (existsingWishlist) {
+      throw { message: "Wishlist item already exists", status: 409 };
+    }
     const result = await this.collection().insertOne({
       userId: new ObjectId(newWishlist.userId),
       productId: new ObjectId(newWishlist.productId),
@@ -61,6 +68,13 @@ class WishlistModel {
   static async removeWishlistItem(userId: string, productId: string) {
     if (!userId || !productId) {
       throw { message: "User ID and Product ID are required", status: 400 };
+    }
+    const existingWishlist = await this.collection().findOne({
+      userId: new ObjectId(userId),
+      productId: new ObjectId(productId),
+    });
+    if (!existingWishlist) {
+      throw { message: "Wishlist item not found", status: 404 };
     }
     const result = await this.collection().deleteOne({
       userId: new ObjectId(userId),
