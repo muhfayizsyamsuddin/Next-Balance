@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useCallback, useEffect } from "react";
-import { Eye, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { ProductType } from "@/Types";
 import AddWishlist from "./AddWishlist";
 
@@ -139,6 +139,7 @@ ProductCardProps) {
                     {product.price.toLocaleString("id-ID", {
                       style: "currency",
                       currency: "IDR",
+                      minimumFractionDigits: 0,
                     })}
                   </div>
 
@@ -259,6 +260,7 @@ ProductCardProps) {
               {product.price.toLocaleString("id-ID", {
                 style: "currency",
                 currency: "IDR",
+                minimumFractionDigits: 0,
               })}
             </div>
 

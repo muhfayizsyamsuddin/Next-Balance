@@ -1,0 +1,39 @@
+services:
+  app:
+    # build:
+    #   context: .
+    image: faizms14/next-balance-app:v1.0
+    env_file: .env
+    # ports:
+    #   - 3000:3000
+    networks:
+      - next-balance-net
+      - proxy_net
+    labels:
+      traefik.enable: true
+      traefik.http.routers.nextbalance.rule: Host(`nextbalance.faizms.com`)
+      traefik.http.routers.nextbalance.entrypoints: websecure
+      traefik.http.routers.nextbalance.tls.certresolver: myresolver
+      traefik.http.services.app.loadbalancer.server.port: 3000
+
+  database:
+    image: mongo:latest
+    container_name: next-balance-db
+    # ports:
+    #   - 27017:27017
+    networks:
+      - next-balance-net
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=next-balance-user
+      - MONGO_INITDB_ROOT_PASSWORD=next-balance-password
+      - MONGO_INITDB_DATABASE=next-balance-db
+    volumes:
+      - next-balance-db-data:/data/db
+
+networks:
+  next-balance-net:
+    driver: bridge
+  proxy_net:
+    external: true
+volumes:
+  next-balance-db-data:

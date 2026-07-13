@@ -1,6 +1,17 @@
+// import { MongoClient } from "mongodb";
+
+// const uri = process.env.MONGODB_URI as string;
+
+// const client = new MongoClient(uri);
+// export const database = client.db(process.env.MONGODB_DB_NAME);
+
 import { MongoClient } from "mongodb";
 
-const uri = process.env.MONGODB_URI as string;
+// Berikan string koneksi tiruan (fallback) agar Next.js tidak mengamuk saat di-build Docker
+const uri = process.env.MONGODB_URI || "mongodb://localhost:27017/fake-db-for-build";
+const dbName = process.env.MONGODB_DB_NAME || "next-balance";
 
 const client = new MongoClient(uri);
-export const database = client.db(process.env.MONGODB_DB_NAME);
+
+// Ini akan tetap mengekspor variabel yang sama persis seperti kodingan lama Anda
+export const database = client.db(dbName);
