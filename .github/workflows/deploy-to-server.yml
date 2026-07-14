@@ -21,7 +21,7 @@ jobs:
             
             - name: Build Docker image
               run:
-                docker build -t ${{ secrets.DOCKER_USERNAME }}/next-balance-app:v1.1 .
+                docker build -t ${{ secrets.DOCKER_USERNAME }}/next-balance-app:v1.1 ./client/next-balance
 
             - name: Push Docker image
               run:
