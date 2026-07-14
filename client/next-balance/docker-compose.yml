@@ -2,13 +2,13 @@ services:
   app:
     # build:
     #   context: .
-    image: faizms14/next-balance-app:v1.0
+    image: faizms14/next-balance-app:v1.1
     env_file: .env
     # ports:
     #   - 3000:3000
     networks:
-      - next-balance-net
       - proxy_net
+      - next-balance-net
     labels:
       traefik.enable: true
       traefik.http.routers.nextbalance.rule: Host(`nextbalance.faizms.com`)
