@@ -11,6 +11,7 @@ services:
       - next-balance-net
     labels:
       traefik.enable: true
+      traefik.docker.network: proxy_net
       traefik.http.routers.nextbalance.rule: Host(`nextbalance.faizms.com`)
       traefik.http.routers.nextbalance.entrypoints: websecure
       traefik.http.routers.nextbalance.tls.certresolver: myresolver
