@@ -39,6 +39,10 @@ jobs:
                 username: ${{ secrets.SSH_USER }}
                 key: ${{ secrets.SSH_PRIVATE_KEY }}
                 script: |
+                  # cd ~/project/nextbalance
+                  # docker compose pull
+                  # docker compose up -d --no-deps
+                  mkdir -p ~/project/nextbalance
                   cd ~/project/nextbalance
-                  docker compose pull
-                  docker compose up -d --no-deps
+                  echo ${{ vars.APP_COMPOSE }} | base64 -d > docker-compose.yml
+                  docker compose up -d
