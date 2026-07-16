@@ -15,7 +15,7 @@ services:
       traefik.http.routers.nextbalance.rule: Host(`nextbalance.faizms.com`)
       traefik.http.routers.nextbalance.entrypoints: websecure
       traefik.http.routers.nextbalance.tls.certresolver: myresolver
-      traefik.http.services.app.loadbalancer.server.port: 3000
+      traefik.http.services.nextbalance.loadbalancer.server.port: 3000
 
   database:
     image: mongo:latest
