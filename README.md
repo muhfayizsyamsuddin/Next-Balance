@@ -1,10 +1,10 @@
 [![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-2e0aaae1b6195c2367325f4f02e2d04e9abb55f0b24a779b69b11b9e10269abc.svg)](https://classroom.github.com/online_ide?assignment_repo_id=20061819&assignment_repo_type=AssignmentRepo)
 
-# My eCommerce App
+# Next-Balance-App
 
 Tema: e-commerce : https://www.newbalance.co.id/
 
-## Tujuan Pembelajaran
+## 
 
 - Student mampu membuat aplikasi server dengan menggunakan menggunakan Typescript, NEXT.js dan melakukan proses CRUD dengan database MongoDB
 - Student mampu membuat web aplikasi dengan menggunakan framework NEXT.js

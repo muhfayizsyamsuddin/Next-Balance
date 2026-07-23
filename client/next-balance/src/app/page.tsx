@@ -70,21 +70,16 @@ export default async function Home() {
                       <p className="text-gray-600 text-sm">Athletic Performance</p>
                     </div>
 
-                    <div className="relative h-64 flex items-center justify-center">
-                      <div className="absolute w-56 h-20 bg-red-300/30 blur-3xl rounded-full bottom-8"></div>
+                    <div className="w-full h-36 relative flex items-center justify-center">
                       <img
-                        src={products[0]?.thumbnail || "/placeholder-shoe.png"}
-                        alt={products[0]?.name}
-                        className="
-                          h-56
-                          w-auto
-                          object-contain
-                          drop-shadow-[0_35px_25px_rgba(0,0,0,0.35)]
-                          hover:scale-110
-                          hover:-rotate-6
-                          transition-all
-                          duration-500
-                        "
+                        src={products[0]?.thumbnail || "/placeholder-shoe.jpg"}
+                        alt={products[0]?.name || "Featured Product"}
+                        style={{
+                          objectFit: "contain",
+                          objectPosition: "center",
+                        }}
+                        sizes="350px"
+                        className="max-h-full max-w-full transition-transform duration-300 hover:scale-110 p-2"
                       />
                     </div>
                   </div>
