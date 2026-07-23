@@ -70,24 +70,41 @@ export default async function Home() {
                       <p className="text-gray-600 text-sm">Athletic Performance</p>
                     </div>
 
-                    <div className="relative h-64 flex items-center justify-center">
+                    <div className="relative flex items-center justify-center h-72">
+                      {/* Glow merah */}
+                      <div className="absolute w-64 h-64 rounded-full bg-red-100 opacity-70 blur-3xl"></div>
 
-                      <div className="absolute w-56 h-20 bg-red-300/30 blur-3xl rounded-full bottom-8"></div>
-
-                      <img
-                        src={products[0]?.thumbnail}
+                      {/* Card kecil untuk gambar */}
+                      <div
                         className="
                           relative
-                          h-56
-                          object-contain
-                          hover:scale-110
-                          hover:-rotate-6
+                          bg-white
+                          rounded-2xl
+                          p-6
+                          shadow-2xl
+                          border border-gray-100
                           transition-all
                           duration-500
-                          drop-shadow-[0_35px_25px_rgba(0,0,0,0.35)]
+                          hover:-translate-y-2
+                          hover:rotate-[-3deg]
                         "
-                      />
+                      >
+                        <img
+                          src={products[0]?.thumbnail}
+                          alt={products[0]?.name}
+                          className="
+                            h-52
+                            w-auto
+                            object-contain
+                            transition-transform
+                            duration-500
+                            hover:scale-110
+                          "
+                        />
+                      </div>
 
+                      {/* Shadow bawah */}
+                      <div className="absolute bottom-6 w-52 h-5 bg-black/20 blur-xl rounded-full"></div>
                     </div>
                   </div>
                 </div>
