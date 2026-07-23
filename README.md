@@ -4,7 +4,9 @@
 
 Tema: e-commerce : https://www.newbalance.co.id/
 
-## 
+## Live Demo
+
+https://nextbalance.faizms.com || https://next-balance-app.vercel.app/
 
 - Student mampu membuat aplikasi server dengan menggunakan menggunakan Typescript, NEXT.js dan melakukan proses CRUD dengan database MongoDB
 - Student mampu membuat web aplikasi dengan menggunakan framework NEXT.js
