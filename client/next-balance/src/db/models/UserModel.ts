@@ -2,6 +2,7 @@ import { NewUserType } from "@/Types";
 import { database } from "../config/mongodb";
 import * as z from "zod";
 import { hashPassword } from "@/helpers/bcrypt";
+import { ObjectId } from "mongodb";
 // import errHandler from "@/helpers/errHandler";
 
 const UserSchema = z.object({
@@ -50,6 +51,12 @@ class UserModel {
     const user = await this.collection().findOne({ email });
     return user;
   }
+
+  static async findById(id: string) {
+  return this.collection().findOne({
+    _id: new ObjectId(id),
+  });
+}
 }
 
 export default UserModel;

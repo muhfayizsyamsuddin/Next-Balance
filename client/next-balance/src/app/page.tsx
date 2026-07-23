@@ -66,7 +66,7 @@ export default async function Home() {
                       New Collection
                     </h3>
                     <p className="text-gray-600 mb-4">Athletic Performance</p>
-                    <div className="aspect-[7/3] w-full rounded-lg overflow-hidden shadow-inner relative">
+                    {/* <div className="aspect-[7/3] w-full rounded-lg overflow-hidden shadow-inner relative">
                       <img
                         src={products[0]?.thumbnail || "/placeholder-shoe.jpg"}
                         alt={products[0]?.name || "Featured Product"}
@@ -78,6 +78,18 @@ export default async function Home() {
                         sizes="350px"
                         className="transition-transform duration-300 hover:scale-110 p-4"
                         // priority
+                      />
+                    </div> */}
+                    <div className="w-full h-48 rounded-lg overflow-hidden relative -mt-10">
+                      <img
+                        src={products[0]?.thumbnail || "/placeholder-shoe.jpg"}
+                        alt={products[0]?.name || "Featured Product"}
+                        style={{
+                          objectFit: "contain",
+                          objectPosition: "center",
+                        }}
+                        sizes="350px"
+                        className="w-full h-full transition-transform duration-300 hover:scale-110 p-2"
                       />
                     </div>
                   </div>

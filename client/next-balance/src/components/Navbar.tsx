@@ -11,6 +11,10 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [user, setUser] = useState<{
+  name: string;
+  username: string;
+} | null>(null);
   // const [isClient, setIsClient] = useState<boolean>(false);
 
   const handleLogout = async () => {
@@ -20,12 +24,28 @@ export default function Navbar() {
   };
 
   useEffect(() => {
-    // setIsClient(true);
-    // Cek cookie Authorization di client
-    const isAuth = document.cookie.includes("Authorization");
-    // console.log("Is user logged in:", isAuth);
-    // router.refresh(); // Refresh router untuk update state
-    setIsLoggedIn(isAuth);
+    const fetchUser = async () => {
+      try {
+        const res = await fetch("/api/me");
+
+        if (!res.ok) {
+          setIsLoggedIn(false);
+          setUser(null);
+          return;
+        }
+
+        const data = await res.json();
+
+        setUser(data);
+        setIsLoggedIn(true);
+      } catch (err) {
+        console.error(err);
+        setIsLoggedIn(false);
+        setUser(null);
+      }
+    };
+
+    fetchUser();
   }, []);
 
   return (
@@ -77,23 +97,10 @@ export default function Navbar() {
               </Link>
             </div>
 
-            {/* Search Bar - Desktop */}
-            {/* <div className="hidden lg:flex items-center flex-1 max-w-lg mx-8">
-              <div className="relative w-full">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Search className="h-5 w-5 text-gray-400" />
-                </div>
-                <input
-                  type="text"
-                  placeholder="Search products..."
-                  className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-gray-900 focus:border-gray-900"
-                />
-              </div>
-            </div> */}
             <div className="hidden lg:flex items-center space-x-4">
               {isLoggedIn !== null && (
                 <p className="text-gray-700">
-                  Welcome to NextBalance {isLoggedIn ? "Someone" : "Guest"}
+                  Welcome to NextBalance {user?.username ?? "Guest"}
                 </p>
               )}
             </div>
@@ -135,11 +142,6 @@ export default function Navbar() {
                       <button
                         className="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100"
                         onClick={handleLogout}
-                        // onClick={async () => {
-                        // await LogOut(); // panggil server action untuk hapus cookie
-                        // setIsLoggedIn(false);
-                        // router.push("/login"); // redirect ke halaman login
-                        // }}
                       >
                         Logout
                       </button>
