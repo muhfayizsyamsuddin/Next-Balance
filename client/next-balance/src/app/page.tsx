@@ -59,28 +59,18 @@ export default async function Home() {
               </div>
             </div>
             <div className="relative">
-              <div className="bg-gradient-to-br from-red-500 to-red-700 rounded-2xl p-8 transform rotate-3 hover:rotate-0 transition-transform duration-300">
+              <div className="bg-gradient-to-br from-red-500 to-red-700 rounded-2xl p-6 transform rotate-3 hover:rotate-0 transition-transform duration-300">
                 <div className="bg-white rounded-xl p-6 transform -rotate-3">
-                  <div className="text-center">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                      New Collection
-                    </h3>
-                    <p className="text-gray-600 mb-4">Athletic Performance</p>
-                    {/* <div className="aspect-[7/3] w-full rounded-lg overflow-hidden shadow-inner relative">
-                      <img
-                        src={products[0]?.thumbnail || "/placeholder-shoe.jpg"}
-                        alt={products[0]?.name || "Featured Product"}
-                        // fill
-                        style={{
-                          objectFit: "contain",
-                          objectPosition: "center",
-                        }}
-                        sizes="350px"
-                        className="transition-transform duration-300 hover:scale-110 p-4"
-                        // priority
-                      />
-                    </div> */}
-                    <div className="w-full h-48 rounded-lg overflow-hidden relative -mt-10">
+                  <div className="flex flex-col items-center justify-between min-h-[260px]">
+                    {/* Bagian Teks */}
+                    <div className="text-center mb-4">
+                      <h3 className="text-2xl font-bold text-gray-900 mb-1">
+                        New Collection
+                      </h3>
+                      <p className="text-gray-600 text-sm">Athletic Performance</p>
+                    </div>
+
+                    <div className="w-full h-36 relative flex items-center justify-center">
                       <img
                         src={products[0]?.thumbnail || "/placeholder-shoe.jpg"}
                         alt={products[0]?.name || "Featured Product"}
@@ -89,7 +79,7 @@ export default async function Home() {
                           objectPosition: "center",
                         }}
                         sizes="350px"
-                        className="w-full h-full transition-transform duration-300 hover:scale-110 p-2"
+                        className="max-h-full max-w-full transition-transform duration-300 hover:scale-110 p-2"
                       />
                     </div>
                   </div>

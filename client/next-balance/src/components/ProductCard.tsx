@@ -33,21 +33,27 @@ ProductCardProps) {
         credentials: "include",
         cache: "no-store",
       });
-      if (res.ok) {
-        const wishlist = await res.json();
-        const found = wishlist.some(
-          (item: { productId: string }) =>
-            item.productId.toString() === product._id.toString()
-        );
-        setIsInWishlist(found);
-      }
+      if (!res.ok) return;
+
+      const wishlist = await res.json();
+
+      const found = wishlist.some(
+        (item: { productId: string }) =>
+          item.productId.toString() === product._id.toString()
+      );
+
+      setIsInWishlist(found);
     } catch (error) {
       console.error("Error fetching wishlist status:", error);
     }
   }, [product._id]);
 
   useEffect(() => {
-    fetchWishlistStatus();
+    const isLoggedIn = document.cookie.includes("Authorization");
+
+    if (isLoggedIn) {
+      fetchWishlistStatus();
+    }
   }, [fetchWishlistStatus]);
 
   // Handle wishlist state change
@@ -63,18 +69,6 @@ ProductCardProps) {
     },
     [fetchWishlistStatus]
   );
-
-  // const handleAddToCart = (e: React.MouseEvent) => {
-  //   e.preventDefault();
-  //   e.stopPropagation();
-  //   onAddToCart?.(product._id);
-  // };
-
-  // const handleQuickView = (e: React.MouseEvent) => {
-  //   e.preventDefault();
-  //   e.stopPropagation();
-  //   onQuickView?.(product._id);
-  // };
 
   if (layout === "list") {
     return (
@@ -206,30 +200,8 @@ ProductCardProps) {
                 size="sm"
                 className="bg-white rounded-full shadow-md hover:bg-gray-50 p-2"
               />
-              {/* <button
-                onClick={handleQuickView}
-                className="p-2 bg-white rounded-full shadow-md hover:bg-gray-50 transition-colors"
-                suppressHydrationWarning={true}
-                aria-label="Quick view"
-              >
-                <Eye className="h-4 w-4 text-gray-600" />
-              </button> */}
             </div>
           )}
-
-          {/* Quick Add to Cart - Appears on Hover */}
-          {/* {showQuickActions && (
-            <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
-              <button
-                onClick={handleAddToCart}
-                className="w-full bg-gray-900 text-white py-2 px-4 rounded-lg hover:bg-gray-800 transition-colors flex items-center justify-center gap-2 font-medium"
-                suppressHydrationWarning={true}
-              >
-                <ShoppingCart className="h-4 w-4" />
-                Add to Cart
-              </button>
-            </div>
-          )} */}
         </div>
 
         {/* Content Section */}
