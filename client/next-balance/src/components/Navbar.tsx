@@ -24,9 +24,19 @@ export default function Navbar() {
   };
 
   useEffect(() => {
+    const hasToken = document.cookie.includes("Authorization=");
+
+    if (!hasToken) {
+      setIsLoggedIn(false);
+      setUser(null);
+      return;
+    }
+
     const fetchUser = async () => {
       try {
-        const res = await fetch("/api/me");
+        const res = await fetch("/api/me", {
+          credentials: "include",
+        });
 
         if (!res.ok) {
           setIsLoggedIn(false);
