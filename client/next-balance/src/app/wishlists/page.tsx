@@ -394,12 +394,12 @@ export default function Wishlist() {
                 {/* Gambar Produk */}
                 <Link href={`/products/${item.product.slug}`}>
                   <div className="aspect-square bg-gray-100 overflow-hidden">
-                    <Image
+                    <img
                       src={item.product.thumbnail}
                       alt={item.product.name}
                       width={256}
                       height={256}
-                      priority
+                      // priority
                       className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                     />
                   </div>
@@ -460,12 +460,12 @@ export default function Wishlist() {
                   href={`/products/${item.product.slug}`}
                   className="w-32 h-32 bg-gray-100 flex-shrink-0"
                 >
-                  <Image
+                  <img
                     src={item.product.thumbnail}
                     alt={item.product.name}
                     width={128}
                     height={128}
-                    priority
+                    // priority
                     className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                   />
                 </Link>

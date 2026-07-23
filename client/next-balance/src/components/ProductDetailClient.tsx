@@ -159,13 +159,13 @@ export default function ProductDetailClient({
             <div className="space-y-4">
               {/* Main Image */}
               <div className="aspect-square bg-gray-100 rounded-lg overflow-hidden">
-                <Image
+                <img
                   src={product.images[selectedImageIndex] || product.thumbnail}
                   alt={product.name}
                   width={600}
                   height={600}
                   className="w-full h-full object-cover"
-                  priority
+                  // priority
                 />
               </div>
 
@@ -182,7 +182,7 @@ export default function ProductDetailClient({
                           : "border-transparent hover:border-gray-300"
                       }`}
                     >
-                      <Image
+                      <img
                         src={image}
                         alt={`${product.name} view ${index + 1}`}
                         width={150}

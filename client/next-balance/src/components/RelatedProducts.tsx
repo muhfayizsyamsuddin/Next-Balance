@@ -81,10 +81,10 @@ export default function RelatedProducts({
           {relatedProducts.map((product) => (
             <div key={product._id} className="group">
               <div className="relative aspect-square bg-gray-100 rounded-lg overflow-hidden mb-4">
-                <Image
+                <img
                   src={product.thumbnail}
                   alt={product.name}
-                  fill
+                  // fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
                 />
 

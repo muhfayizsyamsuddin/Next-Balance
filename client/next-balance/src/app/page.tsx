@@ -67,17 +67,17 @@ export default async function Home() {
                     </h3>
                     <p className="text-gray-600 mb-4">Athletic Performance</p>
                     <div className="aspect-[7/3] w-full rounded-lg overflow-hidden shadow-inner relative">
-                      <Image
+                      <img
                         src={products[0]?.thumbnail || "/placeholder-shoe.jpg"}
                         alt={products[0]?.name || "Featured Product"}
-                        fill
+                        // fill
                         style={{
                           objectFit: "contain",
                           objectPosition: "center",
                         }}
                         sizes="350px"
                         className="transition-transform duration-300 hover:scale-110 p-4"
-                        priority
+                        // priority
                       />
                     </div>
                   </div>

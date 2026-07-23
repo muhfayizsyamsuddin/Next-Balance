@@ -83,10 +83,10 @@ ProductCardProps) {
           <div className="flex">
             {/* Image Section */}
             <div className="relative w-48 h-48 flex-shrink-0">
-              <Image
+              <img
                 src={product.thumbnail}
                 alt={product.name}
-                fill
+                // fill
                 className="object-cover group-hover:scale-105 transition-transform duration-300"
                 onLoad={() => setImageLoaded(true)}
               />
@@ -163,10 +163,10 @@ ProductCardProps) {
       <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-xl transition-all duration-300 hover:border-gray-300 hover:-translate-y-1">
         {/* Image Section */}
         <div className="relative aspect-square overflow-hidden">
-          <Image
+          <img
             src={product.images[currentImageIndex] || product.thumbnail}
             alt={product.name}
-            fill
+            // fill
             className="object-cover group-hover:scale-105 transition-transform duration-500"
             onLoad={() => setImageLoaded(true)}
           />
